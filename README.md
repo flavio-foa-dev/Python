@@ -40,7 +40,14 @@ great_chess.extend(
 )
 
 dicionario === seria objeto com os nomes da propiedades
+{"nome": "Flavio",}
+
 conjunto {'alberto', 'gabi'}
 conjunto1 {'alberto', 'luka'}
 conjunto.intersection(conjunto1)
 // retorna o que os dois conjuntos tem em comum .
+conjunto.difference(conjunto')
+// retorna os elementos diferentes
+
+conjunto.union(conjunto1)
+// unifica os dois conjuntos
