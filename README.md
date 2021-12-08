@@ -132,3 +132,11 @@ list(range(1, 11, 2))  # saída: [1, 3, ,5 ,7 , 9]
 
 # podemos utilizar valores negativos para as entradas também
 list(range(10, 0, -1))  # saída: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+### bibliotecas no python
+no pytho voce so importa  diferente do java scripts que voce estala via npm install "nome"
+sintaxe
+from random import randint
+
+for good in list_array:
+    domminios.append(god["dominio"])
