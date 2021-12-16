@@ -87,3 +87,26 @@ Pronto, agora estamos preparados e preparadas para instalar as bibliotecas que p
 De modo geral, podemos dizer que um programa seria menos útil se não pudéssemos coletar valores de pessoas usuárias e muito menos agradável de se utilizar caso o resultado apresentado fosse pouco legível.
 Existem algumas maneiras de nos comunicarmos com o exterior do programa em Python para recebermos dados, assim como existem maneiras de melhorar a exibição dos nossos resultados.
 
+### O que vamos aprender
+Heje, vamos aprender a estruturar  um projeto Python, adicionando tambem um novo  elemento aos nossos programas . Aprederemos como adicionar entrada e saida de dados e a manipular alguns tipos de arquivos CSV e Json. Assim, poderemos persistir dados.
+
+### Sera capaz de :
+- preparar um ambinete em Python, definindo sua estrutura de diretórios e criando ambientes isolados;
+- Instalar biblioteca de terceiros num projeto python para
+- Entender como lidar com exceções em Python;
+- Receber dados de pessoas usuarias, assim como envia-los de volta;
+- Ler e escrever arquivos no formato tabular `csv`;
+- Serializar e dessearalizar dados no formato `Json`.
+
+### Isso é importante.
+No dia a dia, poderemos encontrar aplicações grandes e complexas, que necessitam de uma melhor estruturação do código-fonte. A fim de facilitar a manutenção, é uma boa prática dividir um programa em arquivos menores. Por esse motivo, é importante entender o que são módulos e pacotes e como eles funcionam em uma aplicação.
+Já os dados, são uma das coisas mais valiosas para uma empresa, porque podem se tornar informação. A análise desses dados é cada vez mais decisiva para o sucesso ou fracasso de um negócio. A tomada de decisão pode se embasar em informações relevantes como, por exemplo, o nível de satisfação do cliente (CSAT) e o seu custo de aquisição para a empresa (CAC).
+Aprendendo a manipular arquivos, poderemos persistir dados, recuperá-los e analisá-los posteriormente. Quando dizemos que vamos persistir dados, significa que iremos armazenar/salvar os dados para serem recuperados quando necessários no futuro.
+Vivemos em um mar de informações. Porém afogados na ignorância.
+
+### Entrada e Saída
+Funções podem receber argumentos das pessoas que usam o programa, processá-los e retornar algum valor. Mas como estes argumentos chegam a elas? E o resultado do nosso processamento, como exibi-lo para a pessoa utilizando nossa aplicação?
+De modo geral, podemos dizer que um programa seria menos útil se não pudéssemos coletar valores de pessoas usuárias e muito menos agradável de se utilizar caso o resultado apresentado fosse pouco legível.
+Existem algumas maneiras de nos comunicarmos com o exterior do programa em Python para recebermos dados, assim como existem maneiras de melhorar a exibição dos nossos resultados.
+
+-
