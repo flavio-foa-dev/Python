@@ -9,3 +9,5 @@ source .venv/bin/activate
 
 verivicar o pwe
     which python
+
+input("Digite uma mensagem:")

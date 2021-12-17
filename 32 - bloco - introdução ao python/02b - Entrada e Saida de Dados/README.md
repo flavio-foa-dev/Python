@@ -109,4 +109,83 @@ Funções podem receber argumentos das pessoas que usam o programa, processá-lo
 De modo geral, podemos dizer que um programa seria menos útil se não pudéssemos coletar valores de pessoas usuárias e muito menos agradável de se utilizar caso o resultado apresentado fosse pouco legível.
 Existem algumas maneiras de nos comunicarmos com o exterior do programa em Python para recebermos dados, assim como existem maneiras de melhorar a exibição dos nossos resultados.
 
--
+### Entrada
+
+Uma das maneiras que existem de receber valores em nossos programas é  através  da função `ìmput`, que vem embutida na propia linguagem. Esta função esta vinculada a entrada padão do sistema operacional e tem como paramentro opcional o `prompt` que, caso seja fornecido, exibira a mensagem passada  para ele em tela. O valor recebido atraves da função será do tipo texto(`str`):
+
+```
+input("Digite uma mensagem:")
+```
+O programa permanece parado até  que algum dado seja forneciso. isto pode ser feito digitando algum conteudo, teclando `enter` ou podemos tambem ter os dados redirecionados de um arquivo ou outra fonte. Veja um exemplo de um programa com entrada  de dados fornecido pela usuária:
+
+```
+import random
+
+random_number = random.randint(1, 10)  # escolhe um número aleatório entre 1 e 10
+guess = ""
+
+while guess != random_number:  # enquanto não adivinhar o número
+    guess = int(input("Qual o seu palpite? "))  # pergunte a pessoa usuária um número
+
+print("O número sorteado era: ", guess)
+```
+💡 Fazemos uma conversão do palpite para um número inteiro, pois entrada de dados é sempre str .
+💡 Para rodar o exemplo  acima, não crie um arquivo chamado `random` para inserir o código, pois o módulo que estamos importando se chama `random`, e isso pode ocasionar  num erro! Lembre-se que, para rodar o código, você deve executar, no terminal, o comando `python3 nome_do_arquivo.py`
+
+Outra maneira de recebermos  valores externos na execução de nossos programas é utilizando o `modulo sys`. quando executamos um scripts e adicionamos parâmetros, os mesmos estarão disponiveis atrave is de uma variavel chamada `sys.argv` que é preenchida sem que precisamos fazer nada. Na pretica. podemos escrever o conteudo abaixo em um arquivo e, ao executarmos, passamos alguns parâmetros:
+
+```
+import sys
+
+
+if __name__ == "__main__":
+    for argument in sys.argv:
+        print("Received -> ", argument)
+```
+Para executarmos passando os parâmetros utilizaremos o comando
+
+```
+ python3 arquivo.py 2 4 "teste"
+
+Received ->  arquivo.py
+Received ->  2
+Received ->  4
+Received ->  teste
+
+```
+### Saída
+
+Como ja visto a função `print`, que ja vem embutida na liguagem, é a principal função para imprimirmos um valor em "tela", Normalmente esta função escreve na saida padrão do sitema operacional, mas iremos ver que podemos modificar este e outros comportamentos.
+
+Esta função recebe parâmetros de forma variavel, ou seja pode receber nenhum, um, dois ou n pârametros durante sua invocação
+
+```
+print("O resultado é", 42)  # saída: O resultado é 42
+print("Os resultado são", 6, 23, 42)  # saída: Os resultados são 6 23 42
+```
+Podemos Alterar o separador dos argumentos passados, que por padão, é um espaço em branco.
+
+```
+print("Maria", "João", "Miguel", "Ana")  # saída: Maria João Miguel Ana
+print("Maria", "João", "Miguel", "Ana", sep=", ")  # saída: Maria, João, Miguel, Ana
+```
+Alem do separador, podemos tabem alterar o caracter de fim de linha que , por regra, é uma quebra de linha:
+
+```
+print("Em duas ")
+print("linhas.")
+```
+Saída
+
+```
+Em duas
+linhas.
+```
+uma diferença de parametros
+```
+print("Na mesma", end="")
+print("linha.")
+```
+```
+Na mesma linha.
+```
