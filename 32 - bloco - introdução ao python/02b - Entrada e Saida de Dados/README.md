@@ -213,4 +213,3 @@ print(f"{x:.^3}")  # saída: ".5."
 # ^ indica que o valor será centralizado
 # 3 são o número de caracteres exibidos
 ```
-
