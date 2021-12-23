@@ -213,3 +213,90 @@ print(f"{x:.^3}")  # saída: ".5."
 # ^ indica que o valor será centralizado
 # 3 são o número de caracteres exibidos
 ```
+
+### Manipulação de arquivos
+
+seja para armazenar algumas informação processada ou para manipular imagens, audios, videos ou recuperar dados de uma planilha, precisamos fazer a manipulação de arquivos.
+Podemos fazer uma operação de leitura, de escrita ou ate de ambas, a depender da nossa necessidade. porem idepedentemente da operação executada, é preciso sempre fechar o arquivo apos operá-lo
+
+A função `open` é respomsavel por abrir um arquivo, tomando possivel sua manipulação. Seu único parâmetro obrigatório é o nome do arquivo. Por padão. arquivo são abertos somente para leitura, mas podemos modificar isto passando o modo como vamos abrir o arquivo . No exemplo abaixo , estamos utilizando `mode="w"`. ou seja , estamos abrindo o arquivo para escrita.
+
+```
+file = open("arquivo.txt", mode="w")  # ao abrir um arquivo para escrita, um novo arquivo é criado mesmo que ele já exista, sobrescrevendo o antigo.
+```
+Para escrevermos um conteúdo em um arquivo utilizamos a função write :
+```
+# file = open("arquivo.txt", mode="w")
+
+file.write("nome idade\n")
+file.write("Maria 45\n")
+file.write("Miguel 33\n")
+```
+💡 Podemos escrever em um arquivo apenas após abrirmos ele.
+
+Assim como podemos redirecionar a saída do nosso programa para saida de erros, podemos fazer o mesmo redirecionando o conteudo digitado dentro de `print` para arquivo. Ou seja, tambem podemos escrever em uma arquivo através do `print`
+
+```
+#
+# file.write("Miguel 33\n")
+
+
+# Não precisa da quebra de linha, pois esse é um comportamento padrão do print
+print("Túlio 22", file=file)
+```
+
+Para escrever multiplas  linhas podemos utilizar a função `writelines. Repare que a função espera que cada linha tenha seu propio caractere de separação (\n):
+
+```#
+# print("Túlio 22", file=file)
+
+
+LINES = ["Alberto 35\n", "Betina 22\n", "João 42\n", "Victor 19\n"]
+file.writelines(LINES)
+```
+Abrimos o arquivo, escrevemos seu conteudo, vamos então fechalo:
+
+```
+# file.writelines(LINES)
+
+
+file.close()
+```
+Mas por que devemos sempre fechar um arquivo? A resposta vem do sistema operacional. Temos um limite de quatos arquivos podemos abrir de uma so vez, e um erro é lançado quando atigimos esse limite. Vamos ver um codigo para desmonstrar a ocorrencia de um erro ao abrir muitos arquivos ao mesmo tempo:
+
+```
+arquivos = []
+for index in range(10240):
+    arquivos.append(open(f"arquivo{index}.txt", "w"))
+```
+O numero que o programa ira falhar pode variar, pois o sistema operacional manntém alguns arquivos abertos para seu propio uso.
+outro motivo importante para se fechar os arquivos é que normalmente a manipulação de arquivos é feita através de buffers. Ou seja, a escrita em disco pode não ser imediata. quando fechamos o arquivo, Garantimos que tudo aquilo que ainda não esta escrito seja persistido.
+
+A Leitura do conteúdo de um arquivo pode ser feita utilizando a função `read`. Para experimentar, vamos escrever em um arquivo e lê-lo logo em seguida!
+
+```
+# escrita
+file = open("arquivo.txt", mode="w")
+file.write("Trybe S2")
+file.close()
+
+# leitura
+file = open("arquivo.txt", mode="r")
+content = file.read()
+print(content)
+file.close()  # não podemos esquecer de fechar o arquivo
+```
+Um arquivo é tambem um iterável, ou seja, pode ser percorrido em um laço de repetição.AA cada iteração, uma nova linha ṕe retornada. Vamos fazer igual ao exemplo anterior, porem dessa vez vamos escrever mais de uma linha!
+```
+# escrita
+file = open("arquivo.txt", mode="w")
+LINES = ["Olá\n", "mundo\n", "belo\n", "do\n", "Python\n"]
+file.writelines(LINES)
+file.close()
+
+# leitura
+file = open("arquivo.txt", mode="r")
+for line in file:
+    print(line)  # não esqueça que a quebra de linha também é um caractere da linha
+file.close()  # não podemos esquecer de fechar o arquivo
+```
