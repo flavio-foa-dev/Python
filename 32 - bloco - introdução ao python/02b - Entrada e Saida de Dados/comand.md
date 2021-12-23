@@ -11,3 +11,9 @@ verivicar o pwe
     which python
 
 input("Digite uma mensagem:")
+
+imput
+str
+split
+isdigit
+
