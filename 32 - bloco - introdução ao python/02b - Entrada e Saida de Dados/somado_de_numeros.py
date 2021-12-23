@@ -3,8 +3,17 @@ print(f"Seja bem vindo {numero} !")
 for i in numero:
   print(i)
 
-meu_numero = 0
-while meu_numero < 50:
-  meu_numero += int(input("Digite um numero: "))
+meu_numero1 = 0
+while meu_numero1 < 50:
+    try:
+        meu_numero = int(input("Digite um numero: "))
+    except ValueError:
+        print("Não é número")
+        break
+    meu_numero1 += meu_numero
 
-print(f"seu nomero é maior que 50 valor final {meu_numero}")
+if meu_numero1< 50:
+  print("tente novamente")
+if meu_numero > 49:
+  print(f"seu nomero é maior que 50 valor final {meu_numero1}")
+
