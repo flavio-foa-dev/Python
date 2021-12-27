@@ -316,3 +316,50 @@ print(content)  # saída: b'C\xc3\xa1ssio 30'
 file.close()  # não podemos esquecer de fechar o arquivo
 ```
 Erros podem acontecer, um arquivo pode não existir, permissões podem faltar e codificações podem falhar. Por isso, temos de garantir que, um erro ocorro, ainda assim faremos o fechamento do nosso arquivo. Como conseguimos lidar com erro em Python? Vamos agora falar sobre exceções!
+
+## Lidando com exceções
+Há pelo menos dois tipos de erros podem ser destacados: erris de sintaxe e exceções.
+
+## Erros de sintaxe
+Como nos bem sabemos, erros de sintaxe ocorrem quando o codigo utiliza recursos inexistentes da linguagem, que  não consegue  interpreta-lo. É como executar `print{"ola,mundo!"} em vez de print("ola, mundo!")`
+
+## exceções
+Ja as exceções, ocorrem durante a execução e acabam resultando em mensagem de erro. Veja exemplos de exceções:
+
+```
+print(10 * (1 / 0))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ZeroDivisionError: division by zero
+print(4 + spam * 3)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'spam' is not defined
+print('2' + 2)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: can only concatenate str (not "int") to str
+```
+Observe que, apenas no exemploacima, podemos observar três exceções
+`ZeroDivisionError , NameError e TypeError`. a lista completa de exceções ja embutidas na linguagem
+
+### Tratamento de exceções
+Para psrs tratamento exceções, utilizamos o conjunto de instruções `try`, com palavras reservadas `try`e `except` O funcionamneto dessa clausula da seguinte forma:
+
+- se nenhum exceçãos ocorrer, a clausula `except` é ignorada, e a execução da instrução `try` é finalizada.
+- se ocorrer uma exceção durante a execução da clausula `try`, as instruções remanescente na clausula são ignoradas. se o tipo da exceção ocorrida tiver sido previsto em algum `except`, então essa clausula será executada.
+- se não existir nenhum tratador previsto para tal exceção. trata- se de uma exceção nao tratada e a execução do programa termina com uma msg de error.
+
+exemplos
+```
+while True:
+    try:
+        x = int(input("Please enter a number: "))
+        break
+    except ValueError:
+        print("Oops!  That was no valid number.  Try again...")
+```
+
+Cole o código acima no terminal interativo e teste, na prática, como funciona o tratamento de exceções.
+
+## Lidando com exceções  enquanto manipula arquivos
