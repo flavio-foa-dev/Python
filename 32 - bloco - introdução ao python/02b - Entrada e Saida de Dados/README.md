@@ -363,3 +363,4 @@ while True:
 Cole o código acima no terminal interativo e teste, na prática, como funciona o tratamento de exceções.
 
 ## Lidando com exceções  enquanto manipula arquivos
+Agora cientes de como tartar exceções, podemos nos previnir de possiveis erros que ocorrem quando manipulamos arquivos. Sempre devemos fechar um arquivo e podemos, em um bloco `try`, fazer isso utilizando a instrução `finally ou else`  O `finally` e uma outra clasula do conjunto `try`, cuja finalidade e permitir a implementação de ações de limpeza, que sempre devem ser executadas idepedentemente da ocorrencia de ações. Já o else ocorre sempre que todo o try for bem sucedido.
