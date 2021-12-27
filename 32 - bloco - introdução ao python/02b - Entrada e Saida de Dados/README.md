@@ -364,3 +364,40 @@ Cole o código acima no terminal interativo e teste, na prática, como funciona 
 
 ## Lidando com exceções  enquanto manipula arquivos
 Agora cientes de como tartar exceções, podemos nos previnir de possiveis erros que ocorrem quando manipulamos arquivos. Sempre devemos fechar um arquivo e podemos, em um bloco `try`, fazer isso utilizando a instrução `finally ou else`  O `finally` e uma outra clasula do conjunto `try`, cuja finalidade e permitir a implementação de ações de limpeza, que sempre devem ser executadas idepedentemente da ocorrencia de ações. Já o else ocorre sempre que todo o try for bem sucedido.
+
+```
+try:
+    arquivo = open("arquivo.txt", "r")
+except OSError:
+    # será executado caso haja uma exceção
+    print("arquivo inexistente")
+else:
+    # será executado se tudo ocorrer bem no try
+    print("arquivo manipulado e fechado com sucesso")
+    arquivo.close()
+finally:
+    # será sempre executado, independentemente de erro
+    print("Tentativa de abrir arquivo")
+```
+Como estamos abrindo o arquivo em modeo leitura, caso ele não exista , uma exceção sera levantada, executando as clausulas `exception` e `finally`. Etretando se alterarmos o modo para escrita, o arquivo sera criado mesmo se inesxixtente, executando as clausulas `else` e `finally`.
+
+Este padão e tão comum, não so em arquivos como em outros recursos que devemos utilizar e liberar ao final, como conexão de banco de dados, por exemplo, que o Python tem um mecanismo propio para lidar com isto.
+
+o `with` é  a palavra reservada paara gerenciamento de contexto. Este gerenciamento (`with`) é utilizado para encapsular a utilização de um rercuso, garantindo que certas ações sejan tomadas indepedentemente  se ocorreu ou não um erro naquele contexto.
+
+A função `open` retorna um objeto que se comporta como um gerenciador de contexto de arquivos que sera responsavel por abrir e fechar o memo. isto significa que o arquivo possui mecanismo especiais que, quando invocado, utilizando `with`, alocam um determinado recurso, no caso um arquivo, e, quando for terminado, este recurso será liberado.
+
+```
+# Criamos um contexto, limitando o escopo onde o arquivo está aberto.
+# O uso do "as" aqui é somente para atribuir o valor utilizado no contexto à variável file
+with open("arquivo.txt", "w") as file:
+    file.write("Michelle 27\n")
+# como estamos fora do contexto, o arquivo foi fechado
+print(file.closed)
+```
+💡 Já vimos a utilização de gerenciadores de contexto em testes. Lá, capturamos exceções que ocorrem e verificamos se naquele contexto a exceção lançada era a esperada. Não há um recurso a ser liberado, mas estamos garantindo que uma asserção será feita naquele contexto.
+
+
+
+
+
