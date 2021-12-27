@@ -397,7 +397,14 @@ print(file.closed)
 ```
 💡 Já vimos a utilização de gerenciadores de contexto em testes. Lá, capturamos exceções que ocorrem e verificamos se naquele contexto a exceção lançada era a esperada. Não há um recurso a ser liberado, mas estamos garantindo que uma asserção será feita naquele contexto.
 
+### Manipulando arquivos JSON
 
+JSON é um formato textual muito utilizado para ntegração de sistema. ELE  é baseado em um   subconjunto de regras JavaScript, embora seja  idepedente de linguagem.
+
+Por sua legibilidade tamanha (è bem leve ), alem da facilidade de leitura e escrita por seres humanos, vem sendo  bastante utilizado na web e para troca de informações entre istemas.
+
+Alguns exemplos de utillização incluem comunicação com o back-end e front-end, comunicação com o sistemas externos, como por exemplo gateway de pagamento, ou  tambem internos como um sistema de autenticação.
+a linguagem Python ja inclui um modulo para manipulação desse tipo de arquivo e seu nome e json
 
 
 

@@ -14,6 +14,6 @@ while meu_numero1 < 50:
 
 if meu_numero1< 50:
   print("tente novamente")
-if meu_numero > 49:
+if meu_numero >= 50:
   print(f"seu nomero é maior que 50 valor final {meu_numero1}")
 
