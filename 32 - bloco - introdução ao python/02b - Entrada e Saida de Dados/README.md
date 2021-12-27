@@ -300,3 +300,19 @@ for line in file:
     print(line)  # não esqueça que a quebra de linha também é um caractere da linha
 file.close()  # não podemos esquecer de fechar o arquivo
 ```
+Alem de arquivos textuais como os que manipulamos até agora, temos tambem arquivos binarios. Eles são arquivos que contêm uma serie de bytes e a sua leitura pode variar  de acordo co o arquivo. Nesse caso, devemos acrescentar um `b` ao paramentro `mode`
+As operações São similares a de um arquivo textual. porem tanto a escrita quanto a leitura devem ser feitas utilizando bytes
+
+```
+# escrita
+file = open("arquivo.dat", mode="wb")
+file.write(b"C\xc3\xa1ssio 30")  # o prefixo b em uma string indica que seu valor está codificado em bytes
+file.close()
+
+# leitura
+file = open("arquivo.dat", mode="rb")
+content = file.read()
+print(content)  # saída: b'C\xc3\xa1ssio 30'
+file.close()  # não podemos esquecer de fechar o arquivo
+```
+Erros podem acontecer, um arquivo pode não existir, permissões podem faltar e codificações podem falhar. Por isso, temos de garantir que, um erro ocorro, ainda assim faremos o fechamento do nosso arquivo. Como conseguimos lidar com erro em Python? Vamos agora falar sobre exceções!

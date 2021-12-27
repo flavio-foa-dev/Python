@@ -17,3 +17,5 @@ str
 split
 isdigit
 
+import random
+randint(nemor, maior)
