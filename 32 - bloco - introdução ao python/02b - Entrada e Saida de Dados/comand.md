@@ -10,6 +10,10 @@ source .venv/bin/activate
 verivicar o pwe
     which python
 
+estalando flake8 e o black.
+pip install flake8 black
+
+
 input("Digite uma mensagem:")
 
 imput
