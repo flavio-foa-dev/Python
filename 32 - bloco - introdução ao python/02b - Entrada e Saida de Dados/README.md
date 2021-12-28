@@ -406,5 +406,98 @@ Por sua legibilidade tamanha (è bem leve ), alem da facilidade de leitura e esc
 Alguns exemplos de utillização incluem comunicação com o back-end e front-end, comunicação com o sistemas externos, como por exemplo gateway de pagamento, ou  tambem internos como um sistema de autenticação.
 a linguagem Python ja inclui um modulo para manipulação desse tipo de arquivo e seu nome e json
 
+Seus principais metodos para manipulação são: `load, loads, dump, dumps.`
+🐭 Para demostrar de como é feita a manipulação de arquivos JSON, vamos utilizar um arquivo de exemplo, que é uma lista de objetos com suas informações em chave valor
+
+```
+import json  # json é um modulo que vem embutido, porém precisamos importá-lo
 
 
+with open("pokemons.json") as file:
+    content = file.read()  # leitura do arquivo
+    pokemons = json.loads(content)["results"]  # o conteúdo é transformado em estrutura python equivalente, dicionário neste caso.
+    # acessamos a chave results que é onde contém nossa lista de pokemons
+
+print(pokemons[0])  # imprime o primeiro pokemon da lista
+```
+A leitura pode ser feita diretamente do arquivo, utilizando o método `load` ao invés de `loads` . O `loads` carrega o `JSON` a partir de um texto e o `load` carrega o `JSON` a partir de um arquivo.
+
+```
+import json
+
+
+with open("pokemons.json") as file:
+    pokemons = json.load(file)["results"]
+
+print(pokemons[0])  # imprime o primeiro pokemon da lista
+```
+A escrita de aarquivos no formato `JSON` é similar a escrita de arquivos comum, porém primeiro temos de transformar  os dados.
+
+```
+import json
+
+# Leitura de todos os pokemons
+with open("pokemons.json") as file:
+    pokemons = json.load(file)["results"]
+
+# Separamos somente os do tipo grama
+grass_type_pokemons = [
+    pokemon for pokemon in pokemons if "Grass" in pokemon["type"]
+]
+
+# Abre o arquivo para escrevermos apenas o pokemons do tipo grama
+with open("grass_pokemons.json", "w") as file:
+    json_to_write = json.dumps(
+        grass_type_pokemons
+    )  # conversão de Python para o formato json (str)
+    file.write(json_to_write)
+```
+Assim como a desserialização,que faz a transformação de texto em formato **JSON** para **Python**, a serialização, que é o caminho inverso, tambem possui um metodo equivalente para escrever em arquivos de forma direta
+
+```
+import json
+
+# leitura de todos os pokemons
+with open("pokemons.json") as file:
+    pokemons = json.load(file)["results"]
+
+# separamos somente os do tipo grama
+grass_type_pokemons = [
+    pokemon for pokemon in pokemons if "Grass" in pokemon["type"]
+]
+
+# abre o arquivo para escrita
+with open("grass_pokemons.json", "w") as file:
+    # escreve no arquivo já transformando em formato json a estrutura
+    json.dump(grass_type_pokemons, file)
+```
+💡 Arquivos JSON não seguem a nomenclatura habitual de leitura e escrita ( write e read ), pois são considerados formatos de serialização de dados. Seguem então as mesmas nomenclaturas utilizadas em módulos como marshal e pickle , que também são formatos de serialização.
+
+### Manipulando arquivos csv
+
+O formato **CSV** ( Comma Separated Values ) é muito comum em exportação de planilhas de dados e base de dados. Foi utilizado por muito tempo antes de sua definição formal e isso acabou gerando uma não padronização neste formato e o surgimento de varios dialetos.
+
+Cada dialeto tem seus própios delimitadores e caracteres de citação, porem o formato geral é semelhante o suficiente para utilizarmos o mesmo modulo para este processamneto.
+
+Ainda que seu nome indique que o delimitador seja a `,` (Virgula), existe variações que utilizam `;` (ponto e virgula), ou até mesmo tabulação ("\t)
+
+🎲 Sem dúvidas, analise de dados é o que se destaca quando estamos falando sobre manipular arquivos **CSV**. Vamos analisar então uma base de dados
+ 💡 Para fazer o exemplo, cole o arquivo balneabilidade.csv na raiz do diretório em que estará o seu script.
+
+### o modulo CSV, contem  duas principais funções:
+
+  - Um leitor (reader) que nos ajuda a ler o conteudo, ja fazendo as transformações dos valores para PYTHON;
+  - e um escritor (write) para facilitar a escrita nesse formato.
+
+```
+import csv
+
+with open("balneabilidade.csv") as file:
+    beach_status_reader = csv.reader(file, delimiter=",", quotechar='"')
+    header, *data = beach_status_reader
+
+print(data)
+```
+O leitor define como dialeto padão `excel`, que significa dizer que i delimitador de campos sera a "," e o caractere de citação sera as aspas duplas("). Uma forma de modificar estes padões e definindo-os de forma diferente na criação do leitor.
+
+Um jeito de **CSV** pode ser pecorrido utilizando o laço de repetição `for` e, a cada interação, retorna uma nova linha ja transformada em uma lista python com seus respectivos valores.
