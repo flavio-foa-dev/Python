@@ -21,3 +21,5 @@ with open("../data/cisade.csv", mode='r') as file:
     for l in res:
       print(num, l['ponto_codigo'])
       num =+ 1 # nao consigo fazer ficar dinamico
+
+
