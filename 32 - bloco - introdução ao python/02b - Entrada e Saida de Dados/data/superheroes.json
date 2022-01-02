@@ -7,7 +7,7 @@
         "characters":"Bruce Wayne",
             "price":{
                 "data": "01/01/1995",
-                "valor": "202"
+                "valor": "10"
             }
     },
     {
@@ -18,7 +18,7 @@
         "characters":"Kal-El",
             "price":{
                 "data": "01/01/1995",
-                "valor": "202"
+                "valor": "10"
             }
     },
     {
@@ -29,7 +29,7 @@
         "characters":"Jay Garrick, Barry Allen, Wally West, Bart Allen",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "10"
         }
     },
     {
@@ -40,7 +40,7 @@
         "characters":"Alan Scott, Hal Jordan, Guy Gardner, John Stewart, Kyle Raynor, Jade, Sinestro, Simon Baz",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "10"
         }
     },
     {
@@ -51,7 +51,7 @@
         "characters":"Oliver Queen",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "10"
         }
     },
     {
@@ -62,7 +62,7 @@
         "characters":"Princess Diana",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "10"
         }
     },
     {
@@ -73,7 +73,7 @@
         "characters":"Martian Manhunter",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "10"
         }
     },
     {
@@ -84,7 +84,7 @@
         "characters":"Dick Grayson",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "10"
         }
     },
     {
@@ -95,7 +95,7 @@
         "characters":"Dan Garret, Ted Kord, Jaime Reyes",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "10"
         }
     },
     {
@@ -106,7 +106,7 @@
         "characters":"Dinah Drake, Dinah Lance",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "10"
         }
     },
     {
@@ -117,7 +117,7 @@
         "characters":"Peter Parker",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "100"
         }
     },
     {
@@ -128,7 +128,7 @@
         "characters":"Steve Rogers",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "100"
         }
     },
     {
@@ -139,7 +139,7 @@
         "characters":"Tony Stark",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "100"
         }
     },
     {
@@ -150,7 +150,7 @@
         "characters":"Thor Odinson",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "100"
         }
     },
     {
@@ -161,7 +161,7 @@
         "characters":"Bruce Banner",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "100"
         }
     },
     {
@@ -172,7 +172,7 @@
         "characters":"James Howlett",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "100"
         }
     },
     {
@@ -183,7 +183,7 @@
         "characters":"Matthew Michael Murdock",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "100"
         }
     },
     {
@@ -194,7 +194,7 @@
         "characters":"Clinton Francis Barton",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "100"
         }
     },
     {
@@ -205,7 +205,7 @@
         "characters":"Scott Summers",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "100"
         }
     },
     {
@@ -216,7 +216,7 @@
         "characters":"Norrin Radd",
         "price":{
             "data": "01/01/1995",
-            "valor": "202"
+            "valor": "100"
         }
     }
 ]
