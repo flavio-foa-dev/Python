@@ -10,8 +10,14 @@ source .venv/bin/activate
 verivicar o pwe
     which python
 
-estalando flake8 e o black.
+### estalando flake8 e o black.
 pip install flake8 black
+
+### estalando pytest
+python3 -m pip install pytest
+
+### comando para rodar os Testes
+python3 -m pytest
 
 
 input("Digite uma mensagem:")
