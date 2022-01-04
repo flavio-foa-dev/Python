@@ -68,3 +68,35 @@ Vamos rodar nossos testes e ver o resultado? Vamos utilizar o comando:
 python3 -m pytest
 ```
   💡Experimente modificar estes testes para uma falha e veja o resultado.
+
+### Testando falhas
+
+Erros acontecem e nem sempre são inesperados. O python utiliza de exceção para sinalizar que ocorreram erros durante a execução de um codigo e que nem sempre são fatais.
+
+Podemos escrever testes que verificam que um erro deve ocorrer a pártir de uma determinada entrada.
+  📝 Um exemplo pode ser visto abaixo:
+
+```
+def divide(a_number, other_number):
+    "Retorna a divisão de a_number por other_number"
+    return a_number / other_number
+```
+
+```
+import pytest
+from codigo import is_odd, divide
+
+# ...
+
+def test_divide_when_other_number_is_zero_raises_an_exception():
+    with pytest.raises(ZeroDivisionError, match="division by zero"):
+        divide(2, 0)
+```
+
+Utilizamos a função `raises` da `pytest`, que verifica se a exceção ocorreu. Caso contrat=rio, ela lança um `AssertionError`, indicando que o teste não passou. Podemos verificar também se o texto retornado na exceção é o experado, atravez do parâmetro `match` que pode receber uma expresão regular.No exemplo, temos ums divisão por zero, que lança a exceção esperada, e o teste passa com sucesso.
+
+### Um pouco de contexto
+
+Quando escrevemos testes, pensamos em cenàrio distintos que podem ocorrer ao nosso sistema:"dado um arquivo com as seguintes linhas", "Visto que temos um banco de dados registro" ou "a parti de um cliente web". as precondiçoes  ou estados necessarios para execução de um teste , damos o nome de `test fixture` ou apenas `fixture`
+
+Cada teste pode ter seu propio cenario(contexto) ou compartilhar-lo com outros testes
