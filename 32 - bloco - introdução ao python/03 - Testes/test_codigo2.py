@@ -29,4 +29,4 @@ def test_get_order_frequency_per_costumer_when_customer_is_joao_and_order_is_piz
     assert get_order_frequency_per_costumer(orders, "joao", "pizza") == 0
 
 def test_get_order_frequency_per_costumer_when_customer_is_maria_and_order_is_hamburger(orders):
-    assert get_order_frequency_per_costumer(orders, "maria", "hamburger") ==
+    assert get_order_frequency_per_costumer(orders, "maria", "hamburger") == 1
