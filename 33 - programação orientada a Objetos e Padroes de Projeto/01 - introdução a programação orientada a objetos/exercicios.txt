@@ -1,0 +1,4 @@
+Exercício de Fixação
+Antes de sair escrevendo, pense . Como você acha que faz sentido organizar o código da sua funcionalidade? Desenhe, faça um esqueminha das entidades/arquivos/funções/o que for que você criará!
+Cronometre ⏲️ cinco minutos para pensar e siga adiante!
+
