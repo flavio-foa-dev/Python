@@ -128,3 +128,6 @@ Agora pause e imagine uma aplicação com dez entidades. Vinte. Cinquenta. Imagi
 
 Toda arquitetura que tenha como base a Programação Orientada a Objeto quer isso. Quer que você defina entidades e as use sem entender como elas funcionam . Faz sentido? Pois saiba que você acabou de conhecer dois dos quatro pilares da Programação Orientada a Objetos. O pilar de definir entidades chama-se Abstração . O pilar de usá-las sem entender como elas funcionam se chama Encapsulamento .
 Mas calma! Antes de continuarmos, vamos parar para tomar nota desse monte de nomes que estamos aprendendo!
+
+### Dicionario de conceitos:
+Na Programação Orientada a Objeto muitas coisas tem nome, e é importante sabermos quais são, são jargões importantes para uma boa comunicação no mercado! Vamos parar para resumir tudo o que aprendemos até agora, e dar os nomes ao que fizemos.
