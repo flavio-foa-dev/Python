@@ -39,3 +39,92 @@ Não ha forma certa ou errada  de se organizar um codigo. Todas  as suas formas 
 
 Bora codar então! "Mas espera " , você diz! "Eu não sei nada ainda! Tá muito vago. Que nomes eu dou pra essas entidades? Eu divido em arquivos? Funções? Como codo uma entidade? Essas ações entram onde? Eu não sei nada ainda!" Calma! Na dúvida, faça algo pequeno funcionar e siga a partir daí, um pequeno passo de cada vez 🙂
 
+### User nossa primeira entidade
+
+O que é a nossa entidade User? É alguém que quer recuperar uma senha por email. Esse alguém, portanto, tem um email e uma senha. Para identificarmos a pessoa, vamos dar um nome também. Por enquanto, parece que é só disso que precisamos. O Python nos dá ferramentas para criar entidades da forma como quisermos! Com o exemplo, vamos conhecer essas ferramentas um pouco melhor.
+
+```
+class User:
+    def __init__(self, name, email, password):
+        self.name = name
+        self.email = email
+        self.password = password
+```
+Pronto, codamos a nossa entidade! 😄
+No Python, a palavra reservada class é usada, como você talvez imagine, para definir entidades. Não uma entidade específica, uma pessoa específica, mas a entidade de uma forma um pouco mais abstrata, como vimos acima. "Uma entidade user contém um nome, um email e uma senha". É isso que fizemos aí em cima. Para, a partir dessa definição, criarmos uma entidade, precisamos do código abaixo:
+
+```
+class User:
+    def __init__(self, name, email, password):
+        self.name = name
+        self.email = email
+        self.password = password
+
+meu_user = User("Valentino Trocatapa", "valentino@tinytoons.com", "Grana")
+print(meu_user)
+print(meu_user.name)
+print(meu_user.email)
+print(meu_user.password)
+```
+Veja só! Você criou uma variável que contém... a entidade! Temos nela os valores, os dados daquela entidade. Já vimos variáveis que são números, que são strings, que são montes de coisas... Pois é! Nossa variável é uma entidade. Só vamos usar o nome que é dado a tais entidades. Nossa variável é um... Objeto!
+
+### Objetos em python
+```
+class User:
+    def __init__(self, name, email, password):
+        """ Método construtor da classe User. Note que
+        o primeiro parâmetro deve ser o `self`. Isso é
+        uma particularidade de Python, vamos falar mais
+        disso adiante!"""
+        self.name = name
+        self.email = email
+        self.password = password
+
+# Para invocar o método construtor, a sintaxe é NomeDaClasse(parametro 1, parametro 2)
+# Repare que o parâmetro self foi pulado -- um detalhe do Python.
+meu_user = User("Valentino Trocatapa", "valentino@tinytoons.com", "Grana")
+
+# A variável `meu_user` contém o objeto criado pelo construtor da classe User!
+```
+
+Muita calma nessa hora, sintaxe nova é sempre confusa de se absorver. Vamos para um segundo exemplo para elucidar as coisas. Já criamos nossa primeira entidade, agora vamos codar a nossa ação de enviar emails!
+
+```
+class User:
+    def __init__(self, name, email, password):
+        """ Método construtor da classe User. Note que
+        o primeiro parâmetro deve ser o `self`. Isso é
+        uma particularidade de Python, vamos falar mais
+        disso adiante!"""
+        self.name = name
+        self.email = email
+        self.password = password
+
+    def reset_password(self):
+        print("Envia email de reset de senha")
+
+
+meu_user = User("Valentino Trocatapa", "valentino@tinytoons.com", "Grana")
+meu_user.reset_password()
+```
+
+Olha que interessante! Se definimos numa classe uma função, podemos chamar ela a partir do objeto que criamos! Quando pedimos para um objeto fazer algo, dizemos que estamos enviando uma mensagem àquele objeto . Atenção para isso! Na essência, toda lógica da orientação a objetos parte do envio de mensagens entre objetos.
+No código acima, estamos pedindo para meu_user resetar sua senha! Não nos interessa como a ação será feita, só nos interessa que ela será feita! Imagine duas pessoas escrevendo esse código. A pessoa que cria o objeto e pede que ele resete sua senha não precisa saber como ele faz isso! Temos uma classe bem nomeada, com uma função bem nomeada, e isso basta! Ao invés de gastar tempo precioso entendendo seu código, a pessoa pode usá-lo sem esse esforço!
+
+```
+class User:
+    # Não preciso saber como a classe funciona, lalalalala
+
+    def reset_password(self):
+      # A classe tem essa função? Ótimo! Pra mim basta!
+
+
+# Já sei o suficiente pra agir!
+meu_user = User("Valentino Trocatapa", "valentino@tinytoons.com", "Grana")
+meu_user.reset_password()
+```
+Beautiful.
+Agora pause e imagine uma aplicação com dez entidades. Vinte. Cinquenta. Imagine ter que saber como cada uma funciona para codar e utilizá-las. Agora imagine que basta saber qual função usar e o resto acontece automagicamente? Esse é o poder da Programação Orientada a Objetos! Se você já chamou a função de um Service, numa aplicação MSC , e a usou sem saber como ela estava feita, saiba que, no fundo, o que você fez foi usufruir do benefício da Programação Orientada a Objetos, que embasa o MSC!
+
+Toda arquitetura que tenha como base a Programação Orientada a Objeto quer isso. Quer que você defina entidades e as use sem entender como elas funcionam . Faz sentido? Pois saiba que você acabou de conhecer dois dos quatro pilares da Programação Orientada a Objetos. O pilar de definir entidades chama-se Abstração . O pilar de usá-las sem entender como elas funcionam se chama Encapsulamento .
+Mas calma! Antes de continuarmos, vamos parar para tomar nota desse monte de nomes que estamos aprendendo!
