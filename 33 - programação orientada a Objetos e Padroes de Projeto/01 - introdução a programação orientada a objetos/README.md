@@ -132,4 +132,4 @@ Mas calma! Antes de continuarmos, vamos parar para tomar nota desse monte de nom
 ### Dicionario de conceitos:
 Na Programação Orientada a Objeto muitas coisas tem nome, e é importante sabermos quais são, são jargões importantes para uma boa comunicação no mercado! Vamos parar para resumir tudo o que aprendemos até agora, e dar os nomes ao que fizemos.
 
-###
+### self cls
