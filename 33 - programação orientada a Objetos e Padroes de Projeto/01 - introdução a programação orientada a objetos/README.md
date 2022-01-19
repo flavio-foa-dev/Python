@@ -86,8 +86,10 @@ meu_user = User("Valentino Trocatapa", "valentino@tinytoons.com", "Grana")
 
 # A variável `meu_user` contém o objeto criado pelo construtor da classe User!
 ```
+### Enviar email - onde eu coloco esta logica ?
+Bem!, se temos uma entidade User que quer enviar emais de recuperação de senha, em principios faz sentido que essa entidade saiba enviar emais, certo? Entao bora la ! para uma entidade saber fazer algo, precisamos definir nela uma função que represente essa ação .Algo assim:
 
-Muita calma nessa hora, sintaxe nova é sempre confusa de se absorver. Vamos para um segundo exemplo para elucidar as coisas. Já criamos nossa primeira entidade, agora vamos codar a nossa ação de enviar emails!
+
 
 ```
 class User:
@@ -131,5 +133,15 @@ Mas calma! Antes de continuarmos, vamos parar para tomar nota desse monte de nom
 
 ### Dicionario de conceitos:
 Na Programação Orientada a Objeto muitas coisas tem nome, e é importante sabermos quais são, são jargões importantes para uma boa comunicação no mercado! Vamos parar para resumir tudo o que aprendemos até agora, e dar os nomes ao que fizemos.
+
+- Classe :Entidade  "geral que definimos com base no problema que queremos resolver.
+- Objeto: Entidade  "Especifica, criada a partidas regras definidas pela entidade "geral". Pense que a classe é o molde e o objeto a escultura que o malde faz!
+- Instância: esse é  novo! quando criamos um objeto a parti de uma classe! Dizemos que esse objeto é uma instancia dessa classe! ou, tambem, dizemos que a classe instanciou um objeto!
+- Atributo: outro novo! Um atributo é uma informação de uma instancia  que vocẽ criou. O nome de um User, por exemplo.
+- Mensagem: Forma com que objetos interagem- chamando funções uns dos outros. Um chamado como esse é um envio de mensagem a outro objeto "User, resete sua senha"
+- Abstração: Pilar da programação Orientada a Objetos. Se refere a sempre criar entidades que farão as ações que resolverão seu problema.
+- Encapsulamento: Pilar da Programação Orientada a Objetos. Se refere a poder  instanciar  uma entidade e enviar mensagens a ela sem saber como ela funciona por dentro
+
+Tá, tá, tá! Certamente tá um tanto confuso ainda! É normal. A gente precisa explorar mais a nossa situação problema pra entender como Programação Orientada a Objetos é, no fim das contas, uma forma de pensar que faz aplicações melhores !
 
 ###
