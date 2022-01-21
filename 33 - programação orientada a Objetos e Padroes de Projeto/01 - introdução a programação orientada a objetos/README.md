@@ -273,3 +273,4 @@ Vamos ao último nome do dia! Cada objeto pode receber mensagens. O meu_user.res
 Funções que "respondem mensagens" se chamam Métodos . Usualmente ela será nomeada com um verbo ( 'Reset your password!' vira reset_password , por exemplo).
 No contexto de POO, todas as interações são feitas por troca de mensagens! Isso significa que ou você envia uma mensagem para um objeto ou você não faz nada com ele. O bom Encapsulamento faz com que nós só precisemos saber do nome de uma classe e seus métodos para interagir com ela. No Python, mesmo quando você altera um atributo diretamente, por trás dos panos o que ele faz é enviar uma mensagem de atualização para a classe!
 
+# meu Python
