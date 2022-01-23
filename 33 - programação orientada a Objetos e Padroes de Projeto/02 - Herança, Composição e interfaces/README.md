@@ -352,4 +352,133 @@ Com uma classe abstrata 😎
 Ou seja: todo compressor que for criado precisa ter uma função compress que receberá esse parâmetro específico para funcionar!
 Você usa uma classe abstrata com um método abstrato para definir uma interface que, através de herança , definirá o comportamento de todos os compressores futuros, assegurando que sua composição sempre funcionará!
 
+## Metodos de classes, metodos estaticos e metodos de intancia
+
+Lembre-se do código do ZipCompressor :
+
+
+# ...
+
+
+class Compressor(ABC):
+    def __init__(self, filepath='./'):
+        self.filepath = filepath
+
+    @abstractmethod
+    def compress(self, file_name):
+        raise NotImplementedError
+
+
+class ZipCompressor(Compressor):
+    def compress(self, file_name):
+        with ZipFile(file_name + '.zip', 'w') as zip_file:
+            zip_file.write(file_name)
+
+Um último conceito útil antes de encerrarmos o conteúdo de hoje! Pergunte-se: se o local de criação do arquivo for sempre o mesmo quantos ZipCompressor você acha que faz sentido instanciar na sua aplicação?
+Um..? Dois..?
+Deixe eu refazer a pergunta. Se você instanciar vários ZipCompressor , o que muda entre uma instância e outra? A resposta? Nada! Quer você instancie um, dois, dez ZipCompressor , todas as instâncias serão absolutamente idênticas e farão a mesma coisa: terão o método compress com a assinatura que definimos e é isso.
+Para casos assim, podemos dizer que instanciar um objeto dessa classe é desnecessário! Tanto faz se invocamos a função com minha_instancia_de_zip_compressor.compress() ou ZipCompressor.compress() . Mas é possível fazer dessa segunda forma? É possível, em suma, invocar um método a partir de uma classe, e não de uma instância dela? Sim! Observe nossa refatoração:
+
+from abc import ABC, abstractmethod
+import gzip
+import json
+from zipfile import ZipFile
+
+
+class Serializer(ABC):
+    @abstractmethod
+    def serialize(cls, data):
+        raise NotImplementedError
+
+
+class ZipCompressor(Serializer):
+    FILE_PATH = './'
+
+    '''Um método de classe é chamado diretamente da classe,
+    sem uma instância, e ACESSA algum atributo ou método da classe!'''
+    @classmethod
+    def compress(cls, file_name):
+        '''Repare que, acima, o atributo cls é como o self: o
+        cls é a própria classe, passada automaticamente para
+        um método de classe, enquanto o self é a instância'''
+        with ZipFile(cls.FILE_PATH + file_name + '.zip', 'w') as zip_file:
+            zip_file.write(file_name)
+
+
+class GzCompressor(Serializer):
+    '''Um método estático é chamado diretamente da classe,
+    sem uma instância, e NÃO ACESSA nenhum atributo ou método da classe!'''
+    @staticmethod
+    def compress(file_name):
+        '''Como métodos estáticos não acessam classe nem instância,
+        o Python não dá a eles nenhum primeiro parâmetro'''
+        with open(file_name, 'rb') as content:
+            with gzip.open(file_name + '.gz', 'wb') as gzip_file:
+                gzip_file.writelines(content)
+
+
+class SalesReport(ABC):
+    FILE_EXTENSION = ''
+
+    def __init__(self, export_file, compressor=GzCompressor):
+        self.export_file = export_file
+        self.compressor = compressor
+
+    def build(self):
+        return [{
+                'Coluna 1': 'Dado 1',
+                'Coluna 2': 'Dado 2',
+                'Coluna 3': 'Dado 3'
+                },
+                {
+                'Coluna 1': 'Dado A',
+                'Coluna 2': 'Dado B',
+                'Coluna 3': 'Dado C'
+                }]
+
+    def get_export_file_name(self):
+      return self.export_file + self.FILE_EXTENSION
+
+    def compress(self):
+        self.serialize()
+        self.compressor.compress(self.get_export_file_name())
+
+
+class SalesReportJSON(SalesReport):
+    FILE_EXTENSION = '.json'
+
+    def serialize(self):
+        with open(self.export_file + '.json', 'w') as file:
+            json.dump(self.build(), file)
+
+
+class SalesReportCSV(SalesReport):
+    # Sua implementação vai aqui
+    pass
+
+
+# Para testar
+relatorio_de_compras = SalesReportJSON('meu_relatorio_1')
+relatorio_de_vendas = SalesReportJSON('meu_relatorio_2', ZipCompressor)
+
+relatorio_de_compras.compress()
+relatorio_de_vendas.compress()
+
+Ou seja: métodos de classe são chamados diretamente da classe, sem instâncias, e utilizam algum atributo ou função auxiliar da classe para funcionar! Métodos estáticos são chamados diretamente da classe e não utilizam nada dela.
+
+## Composição versus Herança
+É muito comum, na Programação Orientada a Objeto, tentar usar herança para fazer o papel da composição, então tome cuidado! Utilize herança para especialização e composição para compartilhamento de código.
+E lembre-se: muitas vezes não vai ser nítido qual é o caminho certo para a separação dos seus objetos. Programar "no bom caminho" exige bastante prática e a aplicação de alguns princípios que veremos nos próximos capítulos do conteúdo!
+
+## Dicionário de conceitos, parte 2
+Em suma, o que vimos hoje?
+Herança : é uma forma de especializar o comportamento de uma classe com outra classe;
+Classe Abstrata : uma classe que não pode ser instanciada. Utilizada para definir as funções comuns (nem sempre abstratas) e suas assinaturas;
+Métodos Abstratos : um método, ou função, que precisa ser implementado por uma classe herdeira para funcionar corretamente. Criado para definir uma Interface ;
+Interface : conjunto de métodos que um determinado objeto "possui" - ou, o conjunto de mensagens que um objeto é capaz de entender e responder para;
+Composição : incorporar em um objeto outro objeto, para compartilhar código de maneira eficaz;
+Métodos de classe : métodos que podem ser chamados diretamente pela classe definida, e não por sua instância, para definirmos quando instanciar um objeto dessa classe for desnecessário! Utilizam, obrigatóriamente, atributos ou métodos internos da classe em seu funcionamento;
+Métodos estáticos : como os métodos de classe, mas não utilizam nada de sua classe em seu funcionamento.
+E lembre-se: utilize herança para especialização de uma classe geral e composição para compartilhamento de código
+
 
