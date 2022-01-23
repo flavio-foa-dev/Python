@@ -155,4 +155,62 @@ Um objeto deve ser capaz de receber mensagens. As funções que você chama são
 Como assim? Pense da seguinte forma: quando duas pessoas de países diferentes conversam, muitas vezes não é possível conversarem em seus idiomas nativos. Pode ser que um Japonês e um Brasileiro, por exemplo, só consigam se comunicar em Inglês. Você só é capaz de se comunicar com a outra pessoa se disser algo que ela é capaz de entender . Com objetos, é a mesma coisa: a interface de um objeto representa o conjunto de mensagens que ele é capaz de entender! Para a classe SalesReport , sua interface é composta pelas funções build e serialize .
 Lembra que falamos que uma vantagem da Programação Orientada a Objetos é que só precisamos saber como instanciar um objeto e quais funções ele tem ? Falando a mesma coisa de maneira mais técnica, podemos dizer que a Programação Orientada a Objetos garante interfaces bem definidas para as várias partes do nosso programa se comunicarem sem que se precise saber como, internamente, cada parte funciona . Se suas interfaces tem nomes bons e lógicas bem definidas, fica fácil reusar o código que você escreveu! Não é preciso entender como ele funciona, só como me comunico com ele.
 
+## Dicionário de conceitos
 
+Vamos com calma! Como a Programação Orientada a Objeto tem muitos nomes e conceitos, vamos resumir aqui o que aprendemos até então.
+
+- **Herança** : é uma forma de especializar o comportamento de uma classe com outra classe;
+- **Classe Abstrata** : uma classe que não pode ser instanciada. Utilizada para definir as funções comuns (nem sempre abstratas) e suas assinaturas;
+- **Métodos Abstratos** : um método, ou função, que precisa ser implementado por uma classe herdeira para funcionar corretamente. Criado para definir uma Interface ;
+- **Interface** : conjunto de métodos que um determinado objeto "possui" - ou, o conjunto de mensagens que um objeto é capaz de entender e responder para.
+
+# E quando nem todas as herdeiras vão ter o mesmo comportamento ?
+Vamos à mais uma demanda! Os nossos relatórios estão muito grandes, então determina-se que todo relatório deve ser compactado para transitar pelos servidores da empresa! Isso é super importante para economizar rede e disco. Vamos, então, dar aos nossos relatórios a capacidade de se comprimirem!
+
+from abc import ABC, abstractmethod
+import gzip
+import json
+
+
+class SalesReport(ABC):
+    def __init__(self, export_file):
+        self.export_file = export_file
+
+    def build(self):
+        return [{
+                'Coluna 1': 'Dado 1',
+                'Coluna 2': 'Dado 2',
+                'Coluna 3': 'Dado 3'
+                },
+                {
+                'Coluna 1': 'Dado A',
+                'Coluna 2': 'Dado B',
+                'Coluna 3': 'Dado C'
+                }]
+
+    def compress(self):
+        binary_content = json.dumps(self.build()).encode('utf-8')
+
+        with gzip.open(self.export_file + '.gz', 'wb') as compressed_file:
+            compressed_file.write(binary_content)
+
+    @abstractmethod
+    def serialize(self):
+        raise NotImplementedError
+
+
+class SalesReportJSON(SalesReport):
+    def serialize(self):
+        with open(self.export_file + '.json', 'w') as file:
+            json.dump(self.build(), file)
+
+class SalesReportCSV(SalesReport):
+    # Sua implementação vai aqui
+    pass
+
+Repare que adicionamos o comportamento à classe ascendente ! Fazemos isso porque todos os relatórios terão que ser comprimidos. Isso não é um comportamento especializado, é geral! Então faz sentido torná-la parte da interface da classe. E nossa linguagem permite que classes abstratas tenham métodos concretos (ou seja, que fazem coisas de verdade). As classes herdeiras não são obrigadas a re-implementar esses métodos, apenas os abstratos!
+Mas bom! Até aí tudo muito bom. Mas chega, um tempo depois, uma nova demanda! "Nossos relatórios estão fazendo um sucesso incrível e agora precisamos que clientes possam baixá-los, compactados, lógico, e descompactá-los! Mas nossos clientes não tem perfil técnico e não vão saber descompactar um arquivo .gz, então é obrigatório nós compactarmos ele em .zip também!"
+Você poderia pensar que basta, então, mudar o método .compress() para que compacte em .zip ao invés de .gz mas não! O compactamento do gzip é mais eficiente que o zip . Se mudarmos isso, teremos impacto de custos na nossa infraestrutura e não precisamos disso! Precisamos garantir que todos os relatórios sejam compactados em .zip e em .gz .
+
+Exercício de Fixação
+4. Invista cinco minutos tentando resolver esse problema! Spoiler: você encontrará problemas! Quais?

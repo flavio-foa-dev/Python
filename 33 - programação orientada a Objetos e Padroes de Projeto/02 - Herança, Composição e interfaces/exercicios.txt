@@ -17,3 +17,6 @@ a partir da classe herdeira que não implementa esse método e veja o erro que v
 Tente instanciar a SalesReport também! Depois disso, implemente uma lógica qualquer para
 esse método em uma das classes herdeiras e verifique que já é possível instanciá-la e até
 chamar o método!
+
+Exercício de Fixação
+4. Invista cinco minutos tentando resolver esse problema! Spoiler: você encontrará problemas! Quais?
