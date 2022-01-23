@@ -1,0 +1,5 @@
+### Exercício de Fixação
+1. Altere o código da classe SalesReport para que ela, além de gerar relatórios em JSON,
+gere relatórios em CSV também. Defina, primeiro, como você fará a extensão da lógica para
+depois gerar o CSV mesmo. Não gaste mais que cinco minutos nesse exercício!
+Quando o relógio apitar, volte para a leitura que vamos refletir sobre a experiência!
