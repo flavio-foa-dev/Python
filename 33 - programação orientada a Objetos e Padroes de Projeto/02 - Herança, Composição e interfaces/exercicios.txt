@@ -3,3 +3,17 @@
 gere relatórios em CSV também. Defina, primeiro, como você fará a extensão da lógica para
 depois gerar o CSV mesmo. Não gaste mais que cinco minutos nesse exercício!
 Quando o relógio apitar, volte para a leitura que vamos refletir sobre a experiência!
+
+Exercício de Fixação
+2. Antes de prosseguirmos para entender o que é aquele @abstractmethod e aquele (ABC) ,
+vamos fixar o entendimento de herança! Implemente uma classe SalesReportCSV
+que seja herdeira da classe SalesReport , da mesma forma que fizemos com a SalesReportJSON .
+Para testar seu funcionamento, instancie-a e chame sua função serialize .
+
+Exercício de Fixação
+3. Defina na classe SalesReport um segundo método abstrato chamado get_length que
+retorna quantos itens tem no relatório. Tente chamar esse método
+a partir da classe herdeira que não implementa esse método e veja o erro que você recebe.
+Tente instanciar a SalesReport também! Depois disso, implemente uma lógica qualquer para
+esse método em uma das classes herdeiras e verifique que já é possível instanciá-la e até
+chamar o método!

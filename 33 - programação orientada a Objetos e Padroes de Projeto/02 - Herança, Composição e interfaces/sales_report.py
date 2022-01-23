@@ -1,8 +1,9 @@
+from abc import ABC, abstractmethod
 import json
 
 class Sales_Report():
     def __init__(self, export_file):
-        self.export_file = export_file + '.json'
+        self.export_file = export_file
 
     def build(self):
         """
@@ -21,8 +22,15 @@ class Sales_Report():
                 'Coluna 3': 'Dado C'
                 }]
 
+    @abstractmethod
+    def serialize(self):
+        raise NotImplementedError
+
+
+class Sales_report_json(Sales_Report):
+
     def serialize(self):
         # Vamos gerar, aqui, o nosso relatório em formato JSON
-        with open(self.export_file, "w") as file:
+        with open(self.export_file + '.json', "w") as file:
             json.dump(self.build(), file)
 
