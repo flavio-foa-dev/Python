@@ -646,4 +646,3 @@ class Hotel:
 ·
 Manual da Pessoa Estudante
 Feito e constantemente atualizado pelo time Trybe com Elixir, Phoenix, React, Tailwind CSS e 💚
-
