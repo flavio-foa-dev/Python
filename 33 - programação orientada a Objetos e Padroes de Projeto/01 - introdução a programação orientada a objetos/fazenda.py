@@ -4,11 +4,20 @@ class Cachorro:
     tipo_animal = "mamifero"
 
 
-    def __init__(self, name):
+    def __init__(self, name, do_bem):
         self.name = name
+        self.do_bem = do_bem
 
     def grita(self):
         print(f"{self.name}: auu auuu...")
+
+    def morde(self, bicho):
+        if self.do_bem:
+            print(f"{self.name}: eu nao mordo não não grita ")
+
+        else:
+            print(f"{self.name}: esta mordendo {bicho.name}")
+            bicho.grita()
 
 
 
@@ -24,13 +33,7 @@ class Galinha:
         print(f"{self.name}: cocorico...")
 
 if __name__ == '__main__':
-    rex = Cachorro("Rex")
+    rex = Cachorro("Rex", False)
     lili = Galinha("Lili")
 
-    print(rex.cobertura)
-    rex.grita()
-
-    print (lili.cobertura)
-    lili.grita()
-
-    print(f"{rex.grita()}: {lili.grita()} Socorro")
+    rex.morde(lili)
