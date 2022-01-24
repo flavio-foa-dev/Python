@@ -55,3 +55,8 @@ Quem quer fazer o que e com o que ?
 - Usando o exemplo anterior: `git push -u origin exemplo-project-name`
 
 7. Crie um novo `Pull Request` _(PR)_
+
+
+
+Os quatro pilares em uma frase
+Na Programação Orientada a Objetos, você deve criar entidades ( Abstração ) com as mensagens que escuta bem definidas ( Encapsulamento ), podendo especializar comportamentos de entidades ( Herança ) contanto que garanta que a forma de enviar mensagens é consistente ( Polimorfismo )
