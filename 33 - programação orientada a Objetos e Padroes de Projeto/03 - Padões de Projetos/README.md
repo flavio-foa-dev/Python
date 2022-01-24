@@ -475,3 +475,6 @@ player = Player(id=1)
 print(player.tournaments(1))
 
 Se quiser conhecer mais code smells, consulte o Refactoring Guru ! E não deixe de conferir também... as regras do seu linter ! Elas buscam code smells e impedem a gente de deixá-los em nosso código!
+
+
+### Adapter
