@@ -68,3 +68,7 @@ Como diz o próprio nome, a arquitetura do Iptables é formada por "tabelas". Es
 
 ## Fail2ban
 O fail2ban é um IPS ( Intrusion Prevention System - Sistema de Prevenção de intrusos). Essa ferramenta, de maneira simples, monitora os logs da rede e, de maneira proativa, ao detectar comportamento suspeito, como diversas requisições de um mesmo IP ou diversas tentativas de login SSH, ele criar regras noiptables , de modo a rejeitar aquele endereço de IP específico por determinado tempo.
+
+## Proxy
+Outro componente que pode fornecer mais uma camada de segurança quando falamos de redes é o proxy. O proxy provém uma camada a mais de controle entre a internet e os dispositivos da rede, e pode ser utilizado para diversos fins.
+Um uso comum dos proxies é como uma espécie de filtro que, através de características de uma conexão, ou tráfego, consegue determinar se esse tráfego deve ser feito ou não. Por exemplo, para evitar acessos a redes sociais em escritórios o proxy pode ser utilizado para reconhecer palavras chaves em URLs e então recusá-la. Além disso, eles podem impedir que pessoas usuárias acessem sites com conteúdos impróprios ou com potencial de ser uma página maliciosa.
