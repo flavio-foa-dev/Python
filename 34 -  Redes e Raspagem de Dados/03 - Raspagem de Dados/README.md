@@ -556,3 +556,11 @@ with MongoClient() as client:
 
 
 🍃 A interface de métodos desta biblioteca é tão natural que parece que estamos no shell do Mongo. Aqui foram apresentados apenas alguns métodos, mas a similaridade é suficiente para conseguirmos aplicar nosso conhecimento prévio, consultando pontualmente a documentação do próprio MongoDB .
+
+
+Bônus
+Scrapy
+🕷 Uma excelente e poderosa ferramenta para raspagem de dados é a Scrapy . Ela possui, em sua implementação, todos mecanismos citados anteriormente e outros recursos adicionais.
+Vale a pena dar uma olhadinha! 😉
+
+https://scrapy.org/
