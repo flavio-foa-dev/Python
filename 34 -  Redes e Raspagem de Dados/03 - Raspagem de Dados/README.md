@@ -128,3 +128,5 @@ finally:
 
 
 No exemplo acima, para efeitos didáticos, modificamos a URI do recurso, diminuindo o delay de resposta da requisição, através do timeout , porém normalmente este valor não muda.
+
+## Analizando respostas
