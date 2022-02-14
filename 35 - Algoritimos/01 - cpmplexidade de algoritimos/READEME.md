@@ -8,3 +8,4 @@ Essa pergunta ja deve ter passado pela sua cabeça em varios momentos, quanto fa
 Pois bem! Hoje vamos aprender uma métrica universal para calcular o quão eficiente o seu algoritmo é! Funciona para qualquer linguagem e paradigma de programação e servirá de base para suas avaliações de eficiência daqui em diante.
 
 
+
