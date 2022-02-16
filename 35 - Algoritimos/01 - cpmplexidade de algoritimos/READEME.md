@@ -30,4 +30,7 @@ Definir o Caso médio de uma Ordem de Complexidade como o cenário de número de
 
 ## Por que isso é importante
 
-Para qualquer função com um valor de entrada pequeno, nao damos importancia a eficiencia de um algoritimos. Vai ser Rapido epronto
+Para qualquer função com um valor de entrada pequeno , não damos importância à eficiência de um algoritmo. Vai ser rápido e pronto. Agora, e quando sua função tem que lidar com mil valores ao mesmo tempo? E cinco mil? E vinte mil? Quem sabe milhões de valores? Aí a eficiência do que você está fazendo começa a virar um problema. E nós precisamos ser capazes de lidar com cenários assim!
+Acha esses valores exagerados? Pois exemplos não faltam! O famoso Discord , por exemplo, já encarou a demanda de ordenar alfabéticamente uma lista de amigos com até 250.000 pessoas. O tempo máximo que o algoritmo tinha pra rodar? Menos de um segundo e meio. E aí? Vai encarar?! (Se sua curiosidade despertou, busque o artigo nos recursos adicionais desse conteúdo depois que terminar seus estudos!)
+As famosas Big Techs, por exemplo (Google, Amazon, Facebook, etc), fazem processos seletivos onde a capacidade de fazer esse tipo de análise é obrigatória. Em suma: quando sua escala fica grande, esse conhecimento se torna essencial. E com esse conhecimento você vai perceber que existem certos tipos de problemas que são irresolvíveis mesmo que você junte toda a capacidade computacional do planeta e trabalhe nele em potência máxima pelos próximos dez mil anos.
+Acha exagero? Não é. 🙂
