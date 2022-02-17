@@ -165,3 +165,9 @@ meu_array = [1,2,3,4,5]
 
 multiply_arrays(meu_array, meu_array)
 ```
+Repare como, para dois arrays de tamanho 5, temos 25 iterações! Varie os números e veja como, sempre o número de iterações é n vezes n , ou seja, n² ! Por isso, lá em cima, multiplicar por dois o tamanho da entrada, de 2000 para 4000, multiplicou por quatro o tempo de execução: para um algoritmo O(n²) , aumentar a entrada em n vezes, aumenta o tempo de execução em n² vezes!
+Para fixar um pouco, vamos fazer uns exercícios:
+
+Exercício 2: Para desembaraçar a sopa de letrinhas que a seção anterior criou, meça o tempo de execução do algoritmo acima e, mudando o tamanho das entradas, veja como, se você aumenta a entrada em n vezes, o tempo de execução aumenta em n² vezes!
+Exercício 3: Faça um algoritmo qualquer com três loops aninhados um dentro do outro. Entenda como ele terá uma complexidade de O(n³) !
+Se tiver dificuldades, nos procure!
