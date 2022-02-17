@@ -34,3 +34,85 @@ Para qualquer função com um valor de entrada pequeno , não damos importância
 Acha esses valores exagerados? Pois exemplos não faltam! O famoso Discord , por exemplo, já encarou a demanda de ordenar alfabéticamente uma lista de amigos com até 250.000 pessoas. O tempo máximo que o algoritmo tinha pra rodar? Menos de um segundo e meio. E aí? Vai encarar?! (Se sua curiosidade despertou, busque o artigo nos recursos adicionais desse conteúdo depois que terminar seus estudos!)
 As famosas Big Techs, por exemplo (Google, Amazon, Facebook, etc), fazem processos seletivos onde a capacidade de fazer esse tipo de análise é obrigatória. Em suma: quando sua escala fica grande, esse conhecimento se torna essencial. E com esse conhecimento você vai perceber que existem certos tipos de problemas que são irresolvíveis mesmo que você junte toda a capacidade computacional do planeta e trabalhe nele em potência máxima pelos próximos dez mil anos.
 Acha exagero? Não é. 🙂
+
+## Conteudo
+
+Oberserve o algoritimo abaixo
+```
+def sum_array(numbers):
+    sum = 0
+    for number in numbers:
+            sum += number
+
+    return sum
+```
+
+Quanto tempo ele vai demorar para executar? 😁
+"Ora, impossível dizer!", diz a pessoa incrédula. Depende da máquina, do que está rodando nela, dos recursos, de tudo! Não dá pra dizer.
+Ok. Trave todas as configurações. É uma máquina padronizada, sem mais nada rodando, tudo certo. Quanto tempo ele vai demorar para executar? Um segundo? Dez segundos?
+... Tem mais um "depende" aqui, não tem? O tempo de execução depende do tamanho do array passado por parâmetro! Quanto maior o dado passado por parâmetro, mais o algoritmo demorará para executar .
+Hmmm. Legal! Vamos usar isso então! Eu não sei quanto tempo o algoritmo vai demorar para executar: dependem de inúmeros fatores além do meu controle. Mas uma coisa eu tenho certeza: o tempo de execução dele é proporcional ao tamanho do meu dado entrado! Por exemplo:
+
+```
+# def sum_array(numbers):
+  # ...
+
+# Suponha que, para o array abaixo, o tempo de execução seja `n`
+sum_array(array_com_dez_mil_numeros)
+
+# Nesse caso, aqui o tempo de execução vai ser `10 * n`, ou `10n`, já que o array é dez vezes maior que o anterior!
+sum_array(array_com_cem_mil_numeros)
+
+# Já esse é dez mil vezes maior que o primeiro, então esse aqui executa em `100n`
+sum_array(array_com_um_milhão_de_numeros)
+```
+Pois bem!! A todas e a todos eu tenho o orgulho de apresentar a Ordem de Complexidade ! Mas o que raios é isso?! É o quanto que o tempo de execução do algoritmo varia na medida em que a entrada cresce! Observe:
+
+```
+# def sum_array(numbers):
+  # ...
+
+sum_array(array_com_dez_mil_numeros)
+# O tempo de execução deste algoritmo foi 0.0004s
+
+sum_array(array_com_cem_mil_numeros)
+# Para uma execução com dez vezes mais números, o tempo aumentou em dez vezes: 0.004s
+
+sum_array(array_com_um_milhão_de_numeros)
+# Multiplicando o tamanho da entrada por dez novamente, temos um tempo dez vezes maior: 0.05s
+```
+Faça o teste na sua máquina (você já tem os conhecimentos para descobrir como fazer um script que mede esses tempos 🚀). Os valores podem variar, mas as proporções não! Um aumento no tamanho da entrada aumenta o tempo de execução na mesma proporção. Se fizéssemos um gráfico disso, ele seria assim:
+
+
+A Ordem de Complexidade nada mais é do que a representação dessa proporção! Dado que o algoritmo é linearmente proporcional ao tempo de execução (ou seja, se a entrada aumenta em 10 vezes o tempo de execução também aumenta em 10 vezes), dizemos que este é um algoritmo linear!
+A função matemática que representa uma relação linear é f(n) = n . Na notação de Ordem de Complexidade, dizemos que esse algoritmo é O(n) ! Guardem essa notação, vamos usá-la bastante!
+💡 A Ordem de Complexidade pode ser chamada, também, de Complexidade Assintótica.
+
+### Complexidade de tempo e de espaço
+Vamos a um outro exemplo
+
+```
+def squared_array(numbers):
+    array_of_squares = []
+    for number in numbers:
+            array_of_squares.append(number * number)
+
+    return array_of_squares
+```
+Para o algoritmo acima, aumentar a entrada em dez vezes aumenta em dez vezes o tempo de execução! A sua ordem de complexidade, portanto, é O(n) . Na maior parte das vezes em que falarmos de Ordem de Complexidade, estamos falando disso: do tempo que o algoritmo vai demorar para executar, ou complexidade de tempo . Há também uma outra complexidade: a complexidade de espaço , se referindo ao espaço em memória que o algoritmo ocupa.
+A ideia é a mesma: na medida em que a entrada aumenta, quanto o espaço em memória usado pelo algoritmo aumenta? No exemplo acima, o algoritmo povoa e retorna um array de tamanho n , sendo n o tamanho do array entrado, e o retorna. Assim sendo, sua complexidade de espaço é O(n) !
+💡 Se falamos em Ordem de Complexidade sem especificar se é de tempo ou de memória, assuma que é de tempo!
+Mas e o outro exemplo, o do algoritmo sum_array() ?! Nesse caso, ele só precisa do espaço, em memória, de um número para executar. Para qualquer tamanho de entrada ele ocupa a mesma quantidade de espaço para executar. Assim sendo, sua complexidade de espaço é constante . Uma complexidade, seja de memória ou de tempo, ser constante, significa que o tamanho da entrada não influi no tempo de execução/memória ocupada de um algoritmo. A notação para esta complexidade é O(1)
+💡 Quando calculamos a complexidade de espaço não levamos em consideração o espaço ocupado pela entrada! O tamanho da entrada não é algo que podemos, com nosso algoritmo, influenciar, então ele não entra em nossos cálculos.
+Para fixar um pouco, vamos fazer um exercício!
+Exercícios de Fixação
+Exercício 1: Qual a Ordem de Complexidade (complexidade de tempo) do algoritmo abaixo? E a complexidade de espaço?
+
+```
+def multiply_array(numbers):
+    result = 0
+    for number in numbers:
+            result *= number
+
+    return result
+```
