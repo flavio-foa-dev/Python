@@ -116,3 +116,52 @@ def multiply_array(numbers):
 
     return result
 ```
+
+### Complexidade Quadratica
+Observe o algoritimo abaixo:
+
+```
+# Os arrays tem sempre o mesmo tamanho
+def multiply_arrays(array1, array2):
+    result = []
+    for number1 in array1:
+        for number2 in array2:
+            result.append(number1 + number2)
+
+    return result
+```
+Seus tempos de execução para um par de arrays de 2000 e 4000 elementos são:
+
+```
+# def multiply_array(numbers):
+  # ...
+
+sum_array(array_com_dois_mil_numeros)
+# O tempo de execução deste algoritmo foi 0.45s
+
+sum_array(array_com_quatro_mil_numeros)
+# Já esse teve tempo de execução de 1.8s, cerca de quatro vezes maior.
+```
+
+Porque, dessa vez, quando dobramos o tamanho da entrada (de 2000 para 4000) nós quadruplicamos o tempo de execução? Ora, vejamos! Temos dois arrays do mesmo tamanho, que vamos chamar de n . Repare que temos dois loops aninhados um dentro do outro. Isso significa que, para cada número de array1 , todo o array2 será percorrido! Rode o exemplo abaixo para conferir:
+
+```
+def multiply_arrays(array1, array2):
+    result = []
+    number_of_iterations = 0
+
+    for number1 in array1:
+        print(f'Array 1: {number1}')
+        for number2 in array2:
+            print(f'Array 2: {number2}')
+            result.append(number1 * number2)
+            number_of_iterations += 1
+
+    print(f'{number_of_iterations} iterações!')
+    return result
+
+
+meu_array = [1,2,3,4,5]
+
+multiply_arrays(meu_array, meu_array)
+```
