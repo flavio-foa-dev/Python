@@ -171,3 +171,23 @@ Para fixar um pouco, vamos fazer uns exercícios:
 Exercício 2: Para desembaraçar a sopa de letrinhas que a seção anterior criou, meça o tempo de execução do algoritmo acima e, mudando o tamanho das entradas, veja como, se você aumenta a entrada em n vezes, o tempo de execução aumenta em n² vezes!
 Exercício 3: Faça um algoritmo qualquer com três loops aninhados um dentro do outro. Entenda como ele terá uma complexidade de O(n³) !
 Se tiver dificuldades, nos procure!
+
+### Comparando complexidades
+Beleza! Vamos resumir o que vimos até aqui:
+- A ordem de complexidade diz o quanto tempo de execução(ou espaço de memoria ocupado) de um algoritimo cresce, na medida em que aumenta o tamanho da sua entrada!
+- Uma`0(1)` executa no mesmo tempo idependente do tamanho de entrada. como exemplo, lembre-se do acesso a um elemento do aRRAY, ESTUDADO na aula anterior . esse acesso e `0(1)`, pois leva o mesmo tempo, idepedente do tamanho do array;
+- Uma `O(n)` significa que o algoritmo é linear : se aumentamos a entrada em 2 vezes , aumentamos o tempo de execução em 2 vezes ;
+- Uma `O(n²)` significa que o algoritmo é quadrático : se aumentamos a entrada em 2 vezes , aumentamos o tempo de execução em 4 (2²) vezes ;
+- Uma `O(n³)` significa que o algoritmo é cúbico : se aumentamos a entrada em 2 vezes , aumentamos o tempo de execução em 8 (2³) vezes .
+
+Falamos aqui de algoritmos O(n) , O(n²) e até de O(n³) , mas vamos mostrar o que eles significam de outra forma. Observe, antes, o gráfico abaixo, e veja sobre como o tempo de execução de um algoritmo cúbico cresce muito mais para uma entrada muito menor que a do algoritmo linear:
+
+Para se ter uma noção, pense assim: para um algoritmo linear, com n = 1000 temos mil operações. Quando o algoritmo é O(n²) um n = 1000 gera um milhão de operações . Essa mesma quantidade (um milhão) para O(n³) , se atinge com n = 100 . Está começando a entender como alguns algoritmos podem, rapidinho, ficar inviáveis de se executar?
+A seguir, vamos explorar outros tipos de complexidades de algoritmos!
+💡 Lembre-se! Se você se embananar com essa quantidade de números, rode exemplos na sua máquina contando o número de iterações! É uma excelente forma de visualizar a complexidade acontecendo. E não deixe de falar com a gente no Slack se algum exemplo estiver te confundindo!
+### Complexidade logaritima
+Calma! Apesar do termo potencialmente assustador, a complexidade logarítmica não exige cálculos matemáticos complicados para ser entendida. Dado pela notação O(log n) , um algoritmo logarítmico geralmente reduz pela metade o tamanho do input a cada iteração.
+O tempo de execução de um algoritmo é dito logarítmico porque log₂n (lê-se: "log de n na base 2") nos dá o número de iterações que uma entrada de tamanho n terá no algoritmo.
+No exemplo a seguir temos um algoritmo de busca binária. Dado um array de tamanho n ordenado em ordem crescente, encontre um número passado na entrada . É como procurar por um nome numa lista telefônica!
+
+
