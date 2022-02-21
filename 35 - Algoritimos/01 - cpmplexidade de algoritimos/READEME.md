@@ -269,3 +269,70 @@ A única solução exata conhecida para este problema é a força bruta . Ou sej
 ```
 O número de rotas para 3 cidades é 3! == 3 * 2 * 1 = 6 . Atualmente o Brasil tem 5570 municípios. Isso daria 5570 * 5569 * 5568 * ... . Quantos milhares de anos um computador precisaria para rodar esse algoritmo nesse caso? 😄
 Algoritmos que não tem solução conhecida em tempo polinomial, ou seja, que são fatoriais ou exponenciais , resolvíveis somente com força bruta, pertencem a uma categoria de problemas na computação chamada problemas NP Completos . Se quiser conhecer mais sobre essa categoria de problemas, explore nossos recursos adicionais!
+
+
+### Analizando algoritimos com varias estruturas de repetição com
+
+E quando temos um algoritimo como o abaixo?
+```
+def calculations(n):
+    number1 = 0
+    for n1 in range(n):
+        number1 += n1
+
+    number2 = 0
+    for n1 in range(n):
+       for n2 in range(n):
+            number2 += n1 + n2
+
+    number3 = 0
+    for n1 in range(n):
+       for n2 in range(n):
+           for n3 in range(n):
+               number3 += n1 + n2 + n3
+
+    return number1, number2, number3
+
+n1, n2, n3 = calculations(100)
+print(f'{n1}, {n2}, {n3}')
+
+
+```
+Esse algoritmo tem três estruturas de repetição evidentes: uma linear, uma quadrática e uma cúbica. Qual é a ordem de complexidade dele?!
+A rigor, ela seria O(n + n² + n³) . Se os loops estão aninhados você os multiplica, e se estão paralelos você os soma. Podemos pensar em alguns outros exemplos:
+Um algoritmo de busca binária que roda três vezes = O(3 * log n) ;
+Um algoritmo que roda uma busca binária num array de tamanho n para cada elemento de um array de tamanho m = O(m * log n) .
+No entanto, geralmente simplificam-se essas notações. Estamos vendo, ao longo dos nossos estudos, que ordens de complexidade diferentes, para entradas grandes, tem valores absurdamente diferentes. Imagine escrever O(n! + log(n)) . Ora, para uma entrada de tamanho 8 esse número seria O(40320 + 3) . Observe como o componente fatorial da equação, n! = 40320 , domina completamente a ordem de complexidade. Nesse cenário dizemos que a complexidade menor é desprezível , então a omitimos.
+Ou seja: para valores grandes, dizer a maior ordem de complexidade do conjunto já basta para uma boa análise. Então, ao analisar várias estruturas de repetição em paralelo, responda somente com o valor da estrutura que tiver maior ordem de complexidade na hora de fazer a sua análise!
+
+### Melhor caso, pior caso e caso médio
+
+Há um último conceito importante para aprendermos aqui antes de passarmos para proxima strofe. ! v
+Vocês verão nos próximos dias e blocos do curso muitas vezes os termos "melhor caso", "pior caso" e "caso médio". Eles significam o seguinte: "A depender da minha entrada, o meu algoritmo pode executar em O(1) ou O(n) ". Por exemplo, pense na busca sequencial:
+
+```
+def linear_search(numbers, n):
+    for index, number in enumerate(numbers):
+        if(number == n): return index
+
+    return -1
+
+print(linear_search([1, 2, 3, 4, 5], 4))
+```
+Dizemos que, para entradas muito grandes, esse algoritmo é O(n) . O que acontece, porém, caso tenhamos sorte e o número que procuramos seja o primeiro do array? Nesse caso, mesmo para uma entrada infinita, nossa complexidade será O(1) . Esse é o melhor caso desse algoritmo. De forma análoga, o pior caso é o número ser o último elemento do array, ou seja O(n) .
+E o caso médio? Bem, seria algo como O(n * 1/2) , por exemplo (ou seja, o número que procuramos está no meio da lista). Mas, para entradas muito grandes, aprendemos a desprezar os números menos relevantes da soma, então podemos simplificar e dizer que o caso médio é O(n) também.
+Diferentes algoritmos tem diferentes cenários de melhor caso, pior caso e caso médio! Você verá vários exemplo ao longo dos próximos blocos!
+
+### Em suma
+
+Hoje estudamos ordens de complexidade , uma forma de se analisar um algoritmo de qualquer linguagem e feito em qualquer paradigma. Vemos que existem algoritmos dos seguintes tipos:
+- Constantes: O(1) ;
+- Logarítmicos: O(log n) ;
+- Linear: O(n) ;
+- Quadráticos: O(n²) ;
+- Cúbicos: O(n³) ;
+- Exponencial: O(2ⁿ) ;
+- Fatorial: O(n!) .
+
+Vimos também que, a depender do algoritmo, essas análises podem ser combinadas, como por exemplo num algoritmo O(n log n) . Por fim, vimos que problemas que não tem solução conhecida em tempo polinomial, sendo apenas exponenciais ou fatoriais, em algoritmos de força bruta, são chamados NP Completo .
+Vimos que, em algoritmos com várias estruturas de repetição diferentes, devemos sempre considerar a maior ordem de complexidade possível e desprezar as demais na nossa notação. E vimos que algoritmos podem ter diferentes ordens de complexidade para seu melhor caso, pior caso e caso médio.
