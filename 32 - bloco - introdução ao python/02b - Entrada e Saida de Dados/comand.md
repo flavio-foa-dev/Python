@@ -23,3 +23,6 @@ isdigit
 
 import random
 randint(nemor, maior)
+
+leitura de json e leitura de csv escrita tambem
+load , loads , dump , dumps .
