@@ -1,0 +1,165 @@
+Número passado por parâmetro à função: 4
+
+Execução: 4 + 3 + 2 + 1
+
+Resultado: 10
+
+_____-________-______________________
+
+Agora, a prática
+Vamos juntar tudo o que aprendemos até aqui e exercitar mais ainda nosso aprendizado!
+Exercício 1: Crie um algoritmo não recursivo para contar quantos números pares existem em uma sequência numérica (1 a n).
+Exercício 2: Transforme o algoritmo criado acima em recursivo.
+Exercício 3: Crie um algoritmo recursivo que encontre, em uma lista, o maior número inteiro.
+Exercício 4: Escreva um algoritmo recursivo para encontrar o máximo divisor comum ( mdc ) de dois inteiros.
+Exercício 5: Escreva um algoritmo recursivo que identifica se um número é primo.
+Bônus
+Exercício 6: Escreva um algoritmo recursivo que resolva o problema da torre de hanoi, seguindo as instruções:
+Assim como na imagem abaixo, a torre deve conter 3 discos, e três colunas;
+Os discos começam alinhados na primeira coluna, e devem ser organizados respeitando a ordem de tamanho, na última coluna.
+
+Gabarito exercícios de fixação
+Exercício 1: Fibonacci A sequência de fibonacci é uma sequência numérica em que, partindo dos dois primeiros números sendo 0 e 1, o próximo número será sempre a soma dos dois anteriores. Esta sequência é interessante pois aparece muito na matemática e na natureza de formas inusitadas. Veja os primeiros números:
+Copiar
+começo = [0, 1]
+0 + 1 = 1 -> [0, 1, 1]
+1 + 1 = 2 -> [0, 1, 1, 2]
+1 + 2 = 3 -> [0, 1, 1, 2, 3]
+3 + 2 = 5 -> [0, 1, 1, 2, 3, 5]
+e assim por diante: 8, 13, 21, 33, 54...
+Faça uma função que retorne o enésimo número da sequência de Fibonacci.
+Soluções
+Copiar
+def fibonacci(n):
+    sequence = [0, 1]
+    for x in range(n):
+        next = sequence[-1] + sequence[-2]
+        sequence.append(next)
+    return sequence[-1]
+Na forma iterativa, calculamos todos os números da sequência até o número desejado.
+Copiar
+def fibonacci(n):
+    if n < 2:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+Na forma recursiva, definimos o caso trivial ou condição de parada como os dois primeiros números, cuja posição na lista por acaso é igual à seu valor. Em seguida, definimos a lógica recursiva: Um número é igual à soma dos dois numeros que o precedem na sequência.
+Exercício 2: Reversecorp Faça uma função que recebe uma lista, e retorna-a na ordem reversa.
+Soluções
+Copiar
+def reverse(list):
+    reversed_list = []
+    for item in list:
+        reversed_list.insert(0, item)
+    return reversed_list
+Nesta solução iterativa, percorremos a lista inserindo seus elementos em uma nova lista, porém a inserção ocorre no começo da lista (posição 0), assim a ordem se inverte.
+Copiar
+def reverse(list):
+    if len(list) < 2:
+        return list
+    else:
+        return reverse(list[1:]) + [list[0]]
+Nesta solução recursiva primeiro definimos a condição de parada, ou caso base: se a lista tiver menos de dois elementos, ela invertida será ela mesma. Depois, a lógica de recursão é: Para inverter uma lista, basta colocar o primeiro elemento no fim, e depois inverter o resto da lista.
+Exercício 3: Faça um algoritmo recursivo de soma. Esse algoritmo deve receber um número de parâmetro e deve somá-lo a todos os números antecessores a ele.
+Exemplo:
+Copiar
+Número passado por parâmetro à função: 4
+
+Execução: 4 + 3 + 2 + 1
+
+Resultado: 10
+Solução:
+Copiar
+def sum_recursive(n):
+    if n == 0:
+        return 0
+    else:
+        return n + sum_recursive(n - 1)
+
+
+sum_recursive(4)
+Podemos observar que a condição de parada é se n for igual a 0, caso contrário a operação continuará sendo feita.
+Gabarito dos exercícios
+Exercício 1: Crie um algoritmo não recursivo para contar quantos números pares existem em uma sequência numérica (1 a n).
+Solução:
+Copiar
+def conta_pares(n):
+    numero_de_pares = 0
+    for num in range(n+1):
+        if num % 2 == 0 and num != 0:
+            numero_de_pares += 1
+    return numero_de_pares
+Exercício 2: Transforme o algoritmo criado acima em recursivo.
+Solução:
+Copiar
+def conta_pares(n):
+    if n == 1:
+        return 0
+    elif n % 2 == 0:
+        return 1 + conta_pares(n-1)
+    else:
+        return conta_pares(n-1)
+Exercício 3: Crie um algoritmo recursivo que encontre, em uma lista, o maior número inteiro.
+Solução:
+Copiar
+def maiorinteiro_aux(lista, tamanho):
+    if tamanho == 1:
+        return lista[0]
+    else:
+        maior_do_resto_da_lista = maiorinteiro_aux(lista, tamanho-1)
+        if maior_do_resto_da_lista > lista[tamanho-1]:
+            return maior_do_resto_da_lista
+        else:
+            return lista[tamanho-1]
+
+
+def maiorinteiro(lista):
+    tamanho = len(lista)
+    return maiorinteiro_aux(lista, tamanho)
+
+
+print(maiorinteiro([1, 21, 300, 4, 57]))
+Exercício 4: Escreva um algoritmo recursivo para encontrar o máximo divisor comum ( mdc ) de dois inteiros.
+Solução:
+Copiar
+def mdc(a, b):
+    if b == 0:
+        return a
+    return mdc(b, a % b)
+Exercício 5: Escreva um algoritmo recursivo que identifica se um número é primo.
+Solução:
+Copiar
+def temdivisor(n, i, j):
+    if i > j:
+        return False
+    elif n % i == 0:
+        return True
+    else:
+        return temdivisor(n,i + 1,j)
+
+
+def primo(n):
+    return n > 1 and not(temdivisor(n, 2, n - 1))
+
+
+print(primo(997))
+Bônus
+Exercício 6: Escreva um algoritmo recursivo que resolva o problema da torre de hanoi, seguindo as instruções:
+Assim como na imagem abaixo, a torre deve conter 3 discos, e três colunas;
+Os discos começam alinhados na primeira coluna, e devem ser organizados respeitando a ordem de tamanho, na última coluna.
+
+Solução:
+Copiar
+def torres_hanoi(numero_de_discos, a, b, c):
+    if numero_de_discos == 1:
+        print ("Move disco %d de %s para %s" % (numero_de_discos, a, c))
+    else:
+        torres_hanoi(numero_de_discos - 1,a ,c ,b)
+        print ("Move disco %d de %s para %s" % (numero_de_discos, a, c))
+        torres_hanoi(numero_de_discos - 1, b, a, c)
+
+
+print (torres_hanoi(3, a='primeiro', b='meio', c='fim'))
+© Trybe 2022
+·
+Manual da Pessoa Estudante
