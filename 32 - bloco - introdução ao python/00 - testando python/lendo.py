@@ -25,3 +25,4 @@ result = len(text)
 print((result))
 
 print(analize(text))
+
