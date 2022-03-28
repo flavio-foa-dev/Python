@@ -160,4 +160,72 @@ Podemos perceber que cada vez que a função countdown é chamada, um novo dado 
 
 Vamos ver outro exemplo para fixarmos mais esse conceito. Dessa vez, vamos fazer um algoritmo recursivo para cálculo de fatorial. Vamos para o código!
 
+```
+def factorial_recursive(n):  # nome da função e parâmetro
+    if n == 1:  # condição de parada
+        return 1
 
+    else:
+        return n * factorial_recursive(n - 1)  # chamada de si mesma com um novo valor
+
+
+factorial_recursive(5)
+```
+Nessa função acontece, "por baixo dos panos", a mesma coisa que a função do exemplo anterior. Porém, explicando com outras palavras, internamente cada chamada recursiva à função adiciona um frame de pilha, até chegarmos ao caso base. Então, a pilha começa a se desenrolar à medida que cada chamada retorna seus resultados:
+
+
+# Novamente, Interativo x Recursivo
+
+Agora, vamos ver que é possivel ter funções tanto recursivas, quanto interativas para o mesmo problema. Para isso, vamos utilizar os exemplos que usamos.
+Vamos começar olhando para a função recursiva de contagem regressiva, Conseguimos montar uma função interativa para ela? sim
+Olha como fazer
+
+```
+def iterative_countdown(n):
+   while n > 0:
+       print(n)
+       n = n - 1
+   print("FIM!")
+
+   return n
+
+
+iterative_countdown(5)
+```
+Vamos ver agora como fica o código iterativo de cálculo de fatorial:
+
+```
+def iterative_factorial(n):
+    fact = 1
+
+    for i in range(1, n + 1):
+        fact = fact * i
+
+    return fact
+
+
+iterative_factorial(5)
+```
+Como vimos anteriormente escolher entre uma solução recursiva ou iterativa, depende muito do que estamos buscando. Escolher uma solução recursiva não significa ganho de performance, muito pelo contrário, grande parte das vezes, a solução iterativa será mais performática. Escolher a solução recursiva terá um ganho na diminuição de complexidade do código do seu projeto. Aqui, complexidade significa legibilidade. Ou seja, nosso código fica mais simples, mais elegante, quando utilizamos recursividade.
+
+# Análise de algoritmos recursivos
+para conseguirmos realizar a analise de algoritimos recursivos, nós  iremos fazer uso da **Arvore de Recorrencia!** o que é isso ?
+
+# Arvore de Recursão
+O metodo da arvore de recursão pode ser utilizado para estimar o custo de um algoritimo. È um meio de analisarmosseu custo. o que nos ajuda a decidir se tal solução recursiva vale a pena ou não. Podemos visualizar nivel a nivel da estrutura  de um algoritimo recursivo por meio de uma arvore recursiva. No final, tem-se a estimativa de tempo do problema. Vamos ver:
+
+```
+def fibonacci(num):  # nome da função e parâmetro
+    if (num <= 1):  # condição de parada
+        return num
+    else:
+        return fibonacci(num - 2) + fibonacci(num - 1)  # chamada de si mesma com um novo valor
+```
+Acima estamos fazendo um código recursivo para cálculo de fibonacci. Na imagem abaixo visualizamos a representação do algoritmo fibonacci recursivo, que acabamos de montar, convertido em uma estrutura que chamamos de árvore:
+
+Cada nó da árvore acima representa o custo da solução de um subproblema. Quando olhamos para a árvore como um todo, ou seja, quando expandimos ela, podemos somar todos os custos de cada nível da árvore e depois teríamos o resultado total do problema. O problema começa com apenas um nó e vai decompondo até alcançar os casos base, que são as "folhas" da árvore. Folhas são, basicamente, nós da estrutura que não possuem nenhum nó abaixo deles.
+
+Exemplo retirado do site: www.visualgo.net/en/recursion
+💡 Lembre-se! Se você se embananar com as estratégias de análise de recursão, fique tranquilo(a), é um assunto mais desafiador e com o tempo e experiência esse conhecimento vem. E não deixe de falar com a gente no Slack se algum exemplo estiver te confundindo!
+Ou seja: desenhe todas as recursões do problema até chegar aos casos base e some as complexidades! Fique de olho nas proporções! Se cada subproblema é O(n) e você criou um para cada elemento da sua entrada de tamanho n , você tem aí uma complexidade O(n * n) , ou seja, uma complexidade quadrática. Se, por outro lado, a cada subproblema você dividiu o tamanho do problema original por dois, você gerará log n subproblemas. Se cada um desses custa O(n) , você teria uma complexidade O(n* log n)
+A forma de traduzir a lógica da árvore de recursão para uma notação puramente matemática se chama Teorema Mestre ! Não é o nosso escopo por agora, ok? Mas fique à vontade para pesquisar a respeito e nos trazer todas as perguntas, se quiser!
