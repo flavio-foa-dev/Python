@@ -24,4 +24,9 @@ def reverse(list):
         reversed_list.insert(0, item)
     return reversed_list
 
-print(reversed_list)
+
+def reverse(list):
+    if len(list) < 2:
+        return list
+    else:
+        return reverse(list[1:]) + [list[0]]

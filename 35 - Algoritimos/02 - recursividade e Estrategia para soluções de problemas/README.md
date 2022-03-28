@@ -80,3 +80,20 @@ def reverse(list):
         reversed_list.insert(0, item)
     return reversed_list
 ```
+Porem, lembre -se onde podemos aplicar a interação, podemos tambem aplicar recursão. E as vezes, a solução recursiva fica ate mais simples! **Quando dominamos a recursão, ha nuitos problemas que podemos resolver rapidamente algo que, de outra forma, seria, muito trabalhoso de iplantar.**
+Uma solução recursiva;
+```
+def reverse(list):
+    if len(list) < 2:
+        return list
+    else:
+        return reverse(list[1:]) + [list[0]]
+```
+Aqui, sabemos que se a lista tiver somente um elemento, ela invertida é ela mesma; E, caso seja uma lista maior, basta colocar o primeiro elemento por último, e depois inverter o resto! É uma forma bem interessante de ver o problema, não acha?
+Note dois fatos importantes, que as soluções recursivas de ambas as entrevistas whiteboard que fizemos hoje tiveram em comum:
+
+- começando tratando o caso mais simples de maneira trival.
+- Depois, generalizam o resto dos casos , guiando-os na direção do caso trival.
+
+
+# Leis da recursão
