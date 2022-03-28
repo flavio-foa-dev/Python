@@ -58,3 +58,25 @@ def fibonacci(n):
         return fibonacci(n-1) + fibonacci(n-2)
 ```
 Notou como dentro da implementação desta solução, a função chama ela mesma? Que raios é isso?! Calma, já vamos chegar lá.
+
+#recursividade
+Uma função que chama a si mesma é chamada de recursiva, O processo para executar , tal função recursiva, é chamada de recursividade.
+A recursividade é um dos métodos para a resolução de grandes problemas. Dito isso, um problema submetido, a uma solução recursiva, será quebrado em subproblemas menores até chegar a uma parte tão pequena que o torna possível solucioná-lo trivialmente. Um exemplo visual que podemos relacionar a essa tática de resolução de problema, são as bonecas russas, que dentro de si tem diversas outras bonecas, cada vez menores.
+Vamos a outro exemplo
+
+# Whiteboard Interview: ReverseCorp
+
+Suponha agora que voce esta fazendo o processo seletivo para a ReverseCorp, uma empresa que se especializa em produtos e serviços ao contrario. Na  sua entevista, o seu desafio é demonstar as suas abilidades de inversão com o seguinte problema.
+
+"Faça uma function que receba uma lista e retorne na ordem reversa
+
+# Iterativo vs. Recursivo
+Eis uma solução que vamos usar de exemplo. A este método, que já conhecemos, chamamos de método Iterativo.
+
+```
+def reverse(list):
+    reversed_list = []
+    for item in list:
+        reversed_list.insert(0, item)
+    return reversed_list
+```
