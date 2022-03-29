@@ -247,4 +247,286 @@ Algoritmos que utilizam da técnica de dividir e conquistar , consistem em divid
 💡 Os algoritmos abaixo foram implementados de forma recursiva, mas lembre-se, toda solução recursiva pode ser reescrita de forma iterativa.
 
 ### Merge sort
+A ordenação por mistura ( merge sort ), é um algoritmo onde empregamos a técnica da divisão e conquista. Vamos dividindo a nossa coleção em porções menores, até uma coleção mínima. Em seguida vamos misturando as porções, de forma ordenada, até que toda a coleção seja reunida novamente resultando na ordenação.
+Como funciona o algoritmo?
+
+```
+# Vamos supor os números não ordenados
+- coleção = 7 5 1 2 8 4 6 3
+
+# Separamos nosso array em porções menores
+- 7 5 1 2         8 4 6 3
+
+# continuamos fazendo isto
+# até a menor porção possível (1)
+- 7 5    1 2    8 4    6 3
+
+# Até a menor porção possível (1)
+- 7    5    1    2    8    4    6    3
+
+# Feito o processo de divisão, vamos ao processo de conquista.
+# Vamos reagrupando as divisões mas de forma ordenada
+- 5 7    1    2    8    4    6    3
+
+- 5 7    1 2    8    4    6    3
+
+- 5 7     1 2    4 8    6    3
+
+- 5 7     1 2    4 8    3 6
+
+# Continuamos o reagrupamento
+- 1 2 5 7    4 8    3 6
+
+- 1 2 5 7    3 4 6 8
+
+# Por fim misturamos todos os elementos
+- 1 2 3 4 5 6 7 8
+```
+```
+def merge_sort(array):
+    # caso base: se já atingiu a menor porção (1)
+    if len(array) <= 1:
+        # retorne o array
+        return array
+    # calculo do pivot: índice que indica onde o array será particionado
+    # no caso, metade
+    mid = len(array) // 2
+    # para cada metade do array
+    # chama a função merge_sort de forma recursiva
+    left, right = merge_sort(array[:mid]), merge_sort(array[mid:])
+    # mistura as partes que foram divididas
+    return merge(left, right, array.copy())
+
+
+# função auxiliar que realiza a mistura dos dois arrays
+def merge(left, right, merged):
+
+    left_cursor, right_cursor = 0, 0
+
+    # enquanto nenhumas das partes é percorrida por completo
+    while left_cursor < len(left) and right_cursor < len(right):
+
+        # compare os dois itens das partes e insira no array de mistura o menor
+        if left[left_cursor] <= right[right_cursor]:
+            merged[left_cursor + right_cursor] = left[left_cursor]
+            left_cursor += 1
+        else:
+            merged[left_cursor + right_cursor] = right[right_cursor]
+            right_cursor += 1
+    # a iteração acima irá inserir os elementos de forma ordenada
+
+    # quando uma das partes termina, devemos garantir
+    # que a outra sera totalmente inserida no array de mistura
+
+    # itera sobre os elementos restantes na partição "esquerda"
+    # inserindo-os no array de mistura
+    for left_cursor in range(left_cursor, len(left)):
+        merged[left_cursor + right_cursor] = left[left_cursor]
+
+    # itera sobre os elementos restantes na partição "direita"
+    # inserindo-os no array de mistura
+    for right_cursor in range(right_cursor, len(right)):
+        merged[left_cursor + right_cursor] = right[right_cursor]
+
+    return merged
+
+
+print(merge_sort([100, 4, 6, 33, 56, 67]))
+```
+A separação em partes traz uma complexidade O(log n) , e as misturas O(n) . Com isso, temos uma complexidade de O(n log n) , independente do array estar ordenado por completo, não ordenado, ou parcialmente ordenado.
+Como é um algoritmo recursivo, consome mais memória, possuindo uma complexidade de espaço O(n) , ou seja, cresce linearmente proporcional a entrada de dados.
+
+### Quick Sort
+O quicksort é um algoritmo que também utiliza da técnica de divisão e conquista. Sua estratégia de ordenação consiste em determinar um elemento pivô (nome dado ao elemento que divide o array em porções menores). Em seguida, todos os elementos maiores que o pivô serão colocados a direita e os menores a esquerda. Com isto, o pivô estará em sua posição correta e teremos duas sub coleções não ordenados ao seu redor. Recursivamente ordenamos os sub arrays, repetindo o mesmo processo de escolha do pivô e particionamento (divisão).
+Como funciona o algoritmo?
+
+```
+# Vamos supor os números não ordenados
+- coleção = 7 1 2 5 4 6 3
+
+# Faremos a escolha do elemento pivô.
+# Este elemento será o responsável por particionar (dividir) a lista.
+# Posso escolher qualquer elemento neste passo e, por isso,
+# vou escolher o elemento do meio
+- pivot = 5
+
+# Movemos todos os elementos menores para a esquerda e os maiores para a direita (a)
+- 1 2 4 3    5    7 6
+
+# Precisamos ordenar as coleções geradas,
+# começando com a lista de elementos inferiores
+- 1 2 4 3
+
+# Novamente escolhemos o pivot
+- pivot = 2
+
+# Novamente fazemos a divisão (b)
+- 1    2    4 3
+
+# A lista à esquerda já não tem como ser particionada,
+# porém a da direita ainda pode ser particionada (c)
+- 4 3
+
+# Escolhendo o pivô e movendo os outros elementos
+# chegaremos a
+- 3    4
+
+# Agora precisamos o processo de conquista,
+# voltando recursivamente ao passo (c), que pediu para ordenar
+# a sub coleção 4 3, temos como resposta
+- 3 4
+# essa resposta, nos faz retornar ao passo (b), onde concatenaremos ao pivô a ordenação do lado direito e esquerdo,
+# resultando em
+- 1 2 3 4
+
+# Vamos agora ver o outro lado do passo (a)
+- 7 6
+
+# realizando o mesmo processo
+# após escolher o pivô e realizar os movimentos teremos
+- 6    7
+
+# Por fim a resposta é utilizada lá no passo (a) para concatenarmos os dois lados
+# e termos por fim a lista ordenada
+- 1 2 3 4 5 6 7
+```
+
+```
+def quicksort(array, low, high):
+    # caso base: se já atingiu a menor porção (1)
+    if len(array) == 1:
+        # retorne o array
+        return array
+
+    # os índices irão se cruzar quando o array estiver ordenado
+    if low < high:
+        # índice da partição é o índice onde o array foi divido
+        # e é determinado a partir do pivô.
+        # Este índice já está ordenado
+        partition_index = partition(array, low, high)
+
+        # Ordena os elementos presentes antes da partição (menores que o pivô)
+        # e depois (maiores que o pivô)
+        quicksort(array, low, partition_index - 1)
+        quicksort(array, partition_index + 1, high)
+
+
+# função auxiliar responsável pela partição do array
+# escolhendo um pivô e fazendo movimentações dos sub arrays gerados
+def partition(array, low, high):
+    # índice do menor elemento
+    i = low - 1
+    # o pivô será escolhido
+    # através do índice que divide o array
+    pivot = array[high]  # pivot
+
+    # itera sobre os elementos
+    for j in range(low, high):
+
+        # se o elemento corrente é menor ou igual ao pivô
+        if array[j] <= pivot:
+
+            # incrementa o índice do menor elemento
+            i = i + 1
+            array[i], array[j] = array[j], array[i]
+    array[i + 1], array[high] = array[high], array[i + 1]
+
+    return i + 1
+
+
+array = [100, 4, 6, 33, 56, 67]
+quicksort(array, 0, len(array) - 1)
+print(array)
+```
+
+Normalmente esta ordenação ocorre com complexidade O(n log n) , porém em um pior caso (onde o array está ordenado de forma inversa), ocorrerá com complexidade O(n²) .
+💡 Curiosidade: Por baixo dos panos, quando você utiliza a função sorted padrão do python ou faz array.sort , você está utilizando uma ordenação chamada TimSort , que é um algoritmo híbrido que mistura o merge sort e insertion sort. É também utilizado pela linguagem Java para ordenar arrays.
+
+### Algoritmos de Busca
+Algoritmos desta categoria buscam um item com uma determinada propriedade dentro de uma coleção, podendo esta coleção ser gerada elemento a elemento, a partir de uma série de operações (formula matemática, procedimento), não necessitando uma coleção de fato. Não devem ser associados somente com arrays. São considerados algoritmos desta categoria àqueles que fazem travessias em estruturas de dados, com o propósito de encontrar um valor.
+
+
+### Busca Linear
+Uma forma simples de fazer a busca de algum valor em um array ou lista é usando a busca linear , que consiste em percorrer toda a estrutura elemento a elemento, tentando encontrar o valor. Também é conhecida como busca sequencial, por causa da maneira com que percorremos a estrutura em busca do valor.
+A busca linear pode ser simples, mas não necessariamente será a solução mais rápida, já que ela faz uma verificação de todos os elementos para encontrar qual é o correspondente.
+Veja na imagem abaixo:
+
+```
+def search(array, value):
+    # para cada elemento do array e seu índice
+    for index, element in enumerate(array):
+        # se o elemento for igual ao valor
+        if element == value:
+            # retorne seu índice
+            return index
+    # caso não seja encontrado, retorne -1
+    return -1
+
+
+print(search([1, 2, 3], 2))  # saída: 1
+print(search([1, 2, 3], 4))  # saída: -1
+
+# mas esta não é a maneira mais pythonica,
+# pois se você pedir o elemento na posição -1
+# a lista irá te retornar o último elemento
+# portanto uma melhor aproximação seria levantar uma exceção
+# e é exatamente assim que o método index de uma lista é implementado
+print([1, 2, 3].index(2))  # saída: 1
+print([1, 2, 3].index(4))  # saída: Exception("4 is not in list")
+
+# o método index é equivalente ao search implementado,
+# porém lançando uma exceção caso não encontre.
+```
+### Busca Binária
+A Busca binária ( binary search ) é mais um exemplo onde empregamos a técnica da divisão e conquista. É importante destacar que ela supõe que nossa coleção está ordenada e seu funcionamento é através de múltiplas divisões do espaço de busca, reduzindo-o, buscando o elemento no meio do espaço.
+Vamos supor a seguinte lista: [1, 10, 35, 42, 51, 60, 75] e o número buscado é 60 . Dividimos a lista em duas partes e verificamos se o elemento do meio ( 42 ) é o elemento procurado. Como sabemos que a lista esta ordenada e que o valor buscado é maior que o encontrado, não precisamos comparar com todos os outros à esquerda. Vamos procurar somente os valores posteriores a ele [51, 60, 75] . Realizamos o mesmo processo de divisão e nosso elemento do meio passa a ser 60 . Como encontramos o valor, vamos retornar o seu índice, 5 .
+É mais rápida que a busca linear, visto que o número de comparações necessárias, mesmo em um caso onde não encontre um elemento, é menor.
+
+```
+def binary_search(array, low_index, high_index, value):
+    '''
+        array - onde estamos procurando o valor
+        low_index - índice de onde iniciaremos nossa busca
+        high_index - índice de onde finalizaremos nossa busca
+        value - valor a ser procurado
+    '''
+    # caso base: quando os índices se cruzam.
+    # Caso onde a busca terminou e o elemento não foi encontrado
+    if high_index < low_index:
+        raise ValueError(f"{value} is not in list")
+
+    # middle_index é o índice que divide o array formado
+    # entre o menor índice (low) e o maior (high)
+    middle_index = (high_index + low_index) // 2
+
+    # se encontrou o elemento retorne seu índice
+    if array[middle_index] == value:
+        return middle_index
+    # caso o elemento buscado seja menor que o encontrado,
+    # procure somente os anteriores a ele.
+    # Fazemos isto modificando o índice maior,
+    # para o índice anterior ao meio (middle)
+    elif array[middle_index] > value:
+        return binary_search(array, low_index, middle_index - 1, value)
+    # caso o elemento buscado seja maior que o encontrado,
+    # procuramos somente os posteriores a ele.
+    # Fazemos isto indicando que o índice menor
+    # será o índice posterior ao meio (middle)
+    else:
+        return binary_search(array, middle_index + 1, high_index, value)
+
+
+array = [2, 3, 4, 10, 40]
+target = 40
+
+result = binary_search(array, 0, len(array) - 1, target)
+print(f"Elemento encontrado na posição: {result}")
+```
+
+
+
+
+
+
+
 
